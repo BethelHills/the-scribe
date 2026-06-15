@@ -1,0 +1,23 @@
+---
+description: Push all committed changes to the GitHub remote after work is done
+alwaysApply: true
+---
+
+# Git remote for The Scribe
+
+- **Repository:** https://github.com/BethelHills/the-scribe.git
+- **Default remote:** `origin`
+- **Default branch:** `main`
+
+After completing implementation tasks that change the codebase:
+
+1. Run `git status` and `git diff` in `/Users/hb/the-scribe/the-scribe` (the project root with its own `.git`).
+2. Stage only project files; never commit `.env.local` or other secrets (`.env*` is gitignored).
+3. Commit with a clear message when the user asks to save/push work, or when they have instructed to always push changes.
+4. Push to `origin main`:
+   ```bash
+   git push -u origin main
+   ```
+5. If the push fails due to auth, tell the user to sign in to GitHub CLI (`gh auth login`) or configure SSH/credentials.
+
+Do not push from `/Users/hb` (home directory). Always use the dedicated repo at `the-scribe/the-scribe`.
