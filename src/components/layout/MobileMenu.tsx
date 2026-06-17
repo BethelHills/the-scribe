@@ -32,8 +32,8 @@ export default function MobileMenu() {
             className="flex h-full w-[min(280px,85vw)] flex-col overflow-y-auto bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] p-6 text-white"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-8 flex items-center justify-between gap-3">
-              <BrandLogo size="md" href="/" />
+            <div className="mb-6 flex items-start justify-between gap-3">
+              <BrandLogo size="md" href="/" className="min-w-0 flex-1" />
 
               <button
                 type="button"

@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   description:
     "AI-powered writing workspace that learns and writes in an author's unique voice.",
   icons: {
-    icon: `/images/the-scribe-logo.png?v=3`,
-    apple: `/images/the-scribe-logo.png?v=3`,
+    icon: `/images/the-scribe-logo.png?v=4`,
+    apple: `/images/the-scribe-logo.png?v=4`,
   },
 };
 

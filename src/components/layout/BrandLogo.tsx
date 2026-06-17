@@ -2,9 +2,12 @@ import Link from "next/link";
 import { LOGO_SRC } from "@/lib/images";
 
 const sizes = {
-  sm: { className: "h-10 w-auto max-w-[160px] sm:h-11 sm:max-w-[180px]" },
-  md: { className: "h-12 w-auto max-w-[200px]" },
-  lg: { className: "h-[4.5rem] w-auto max-w-[252px] sm:h-20 sm:max-w-[280px]" },
+  // Mobile sticky header
+  sm: { className: "h-14 w-auto max-w-[220px] sm:h-16 sm:max-w-[260px]" },
+  // Mobile menu drawer
+  md: { className: "h-16 w-auto max-w-[260px] sm:h-[4.5rem] sm:max-w-[300px]" },
+  // Desktop sidebar — tall enough to read tagline
+  lg: { className: "h-[7.5rem] w-full max-w-full sm:h-32" },
 } as const;
 
 export default function BrandLogo({
@@ -20,7 +23,6 @@ export default function BrandLogo({
 
   const content = (
     <div className={className}>
-      {/* Native img so logo updates immediately without Next image cache */}
       <img
         src={LOGO_SRC}
         alt="The Scribe — AI Writing Assistant"
@@ -34,7 +36,7 @@ export default function BrandLogo({
     return (
       <Link
         href={href}
-        className="inline-block transition hover:opacity-90 active:opacity-80"
+        className="inline-block w-full transition hover:opacity-90 active:opacity-80"
       >
         {content}
       </Link>
