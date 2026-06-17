@@ -49,9 +49,11 @@ export default function InspirationCard() {
       />
 
       {/* Verse area aligned to the glass panel in the artwork */}
-      <div className="absolute inset-x-[14px] top-[14px] flex h-[118px] items-center px-[10px]">
+      <div className="absolute inset-x-[14px] top-[14px] flex h-[118px] flex-col px-[10px] pt-1">
+        <p className="text-[2.5rem] leading-none text-[#FF8A7A]">&ldquo;</p>
+
         <p
-          className={`text-[13.5px] font-medium leading-[1.55] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
+          className={`mt-2 text-[13.5px] font-medium leading-[1.55] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
             visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
           }`}
         >
