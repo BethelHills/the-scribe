@@ -3,7 +3,6 @@ import {
   BookOpen,
   FileText,
   Home,
-  LayoutTemplate,
   MessageSquareText,
   Settings,
   Sparkles,
@@ -17,7 +16,7 @@ export const navItems = [
   { name: "AI Assistant", href: "/assistant", icon: Sparkles },
   { name: "Voice Profile", href: "/voice-profile", icon: UserRound },
   { name: "Scripture Library", href: "/scripture-library", icon: BookOpen },
-  { name: "Templates", href: "/templates", icon: LayoutTemplate },
+  { name: "Templates", href: "/templates", icon: FileText },
   { name: "Analytics", href: "/analytics", icon: BarChart3 },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
