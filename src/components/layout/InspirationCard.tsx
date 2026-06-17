@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 const verses = [
@@ -37,18 +38,20 @@ export default function InspirationCard() {
   }, [rotate]);
 
   return (
-    <div
-      className="relative min-h-[220px] overflow-hidden rounded-[28px] bg-cover bg-bottom text-white"
-      style={{
-        backgroundImage: "url('/images/inspiration-bg.png')",
-      }}
-    >
-      {/* Masks baked-in quote/text from the image */}
-      <div className="absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-[#4A3568]/95 via-[#5E4070]/88 to-transparent backdrop-blur-[3px]" />
+    <div className="relative h-[232px] w-full overflow-hidden rounded-[28px]">
+      <Image
+        src="/images/inspiration-bg.png"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="232px"
+        priority
+      />
 
-      <div className="absolute left-5 right-5 top-5 z-10 flex min-h-[88px] items-center">
+      {/* Verse area aligned to the glass panel in the artwork */}
+      <div className="absolute inset-x-[14px] top-[14px] flex h-[118px] items-center px-[10px]">
         <p
-          className={`max-w-[200px] text-[16px] font-medium leading-[1.65] text-white/95 transition-all duration-500 ${
+          className={`text-[13.5px] font-medium leading-[1.55] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
             visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
           }`}
         >
