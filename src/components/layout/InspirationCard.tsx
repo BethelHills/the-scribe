@@ -38,7 +38,7 @@ export default function InspirationCard() {
   }, [rotate]);
 
   return (
-    <div className="@container relative w-full overflow-hidden rounded-[28px]">
+    <div className="relative w-full overflow-hidden rounded-[28px]">
       <div className="relative aspect-[837/700] w-full">
         <Image
           src="/images/inspiration-bg.png"
@@ -49,19 +49,21 @@ export default function InspirationCard() {
           priority
         />
 
-        {/* Verse area — positioned to match the glass panel in the artwork (837×700) */}
-        <div className="absolute inset-x-[5.5%] top-[5.25%] flex h-[51%] flex-col items-start justify-start px-[4%] pt-[1%]">
-          <p className="shrink-0 text-[clamp(1.35rem,9cqi,2.25rem)] leading-none text-[#FF8A7A]">
-            &ldquo;
-          </p>
+        {/* Inner glass card in the artwork (837×700 reference) */}
+        <div className="@container absolute left-[14.1%] top-[8.25%] h-[27.15%] w-[74%]">
+          <div className="flex h-full items-start gap-[0.2rem] px-[3%] pt-[4%] sm:gap-1">
+            <p className="w-[11%] shrink-0 text-left text-[clamp(1.1rem,12cqi,2rem)] leading-none text-[#FF8A7A]">
+              &ldquo;
+            </p>
 
-          <p
-            className={`mt-[0.35rem] w-full flex-1 text-left text-[clamp(10.5px,3.35cqi,13.5px)] font-medium leading-[1.45] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
-              visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
-            }`}
-          >
-            {verse}
-          </p>
+            <p
+              className={`min-w-0 flex-1 text-left text-[clamp(10px,3.6cqi,13.5px)] font-medium leading-[1.42] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
+                visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+              }`}
+            >
+              {verse}
+            </p>
+          </div>
         </div>
       </div>
     </div>
