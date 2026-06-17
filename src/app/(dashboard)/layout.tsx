@@ -17,7 +17,7 @@ export default function DashboardLayout({
           <div className="flex-1">
             <div className="sticky top-0 z-40 border-b border-card-border bg-background/90 backdrop-blur lg:hidden">
               <div className="flex items-center justify-between px-4 py-3">
-                <div className="rounded-xl bg-[#17122B] px-3 py-2">
+                <div className="rounded-xl bg-[#0a0812] px-3 py-2">
                   <BrandLogo size="sm" href="/" />
                 </div>
 
