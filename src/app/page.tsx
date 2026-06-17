@@ -130,10 +130,7 @@ export default function Dashboard() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-            <Link
-              href="/manuscript"
-              className="xl:col-span-2 block rounded-[32px] border border-[#E8DFD6] bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
-            >
+            <div className="xl:col-span-2 rounded-[32px] border border-[#E8DFD6] bg-white p-8 shadow-sm">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-sm text-[#7A6F8F]">Current Manuscript</p>
@@ -172,7 +169,7 @@ export default function Dashboard() {
                 <Stat title="Tone Match" value="96%" />
                 <Stat title="Voice Notes" value="18" />
               </div>
-            </Link>
+            </div>
 
             <div className="rounded-[32px] border border-[#E8DFD6] bg-white p-6 shadow-sm">
               <div className="mb-6 flex items-center gap-2">
