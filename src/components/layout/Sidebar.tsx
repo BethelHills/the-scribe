@@ -13,7 +13,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="app-sidebar sticky top-0 hidden h-screen w-[280px] shrink-0 flex-col justify-between overflow-y-auto rounded-r-[28px] bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] p-6 text-white lg:flex">
+    <aside className="app-sidebar hidden w-[280px] shrink-0 flex min-h-screen flex-col justify-between self-stretch overflow-y-auto rounded-r-[28px] bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] p-6 text-white lg:flex">
       <div>
         <div className="mb-6 w-full">
           <BrandLogo size="lg" href="/" className="w-full" />
