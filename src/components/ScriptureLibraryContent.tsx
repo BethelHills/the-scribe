@@ -164,7 +164,7 @@ export default function ScriptureLibraryContent() {
                   )}`
                 )
               }
-              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-center text-sm font-semibold text-foreground sm:w-auto ${buttonInteractions} hover:bg-white/90 active:bg-white/80`}
+              className={`mt-5 w-full text-center sm:w-auto ${ghostButtonClass}`}
             >
               Insert Suggested Verses
             </button>

@@ -14,7 +14,7 @@ import PageContainer from "@/components/layout/PageContainer";
 import PageHeader from "@/components/layout/PageHeader";
 import Card from "@/components/ui/Card";
 import { useRouter } from "next/navigation";
-import { buttonInteractions } from "@/components/ui/buttonStyles";
+import { buttonInteractions, ghostButtonClass } from "@/components/ui/buttonStyles";
 
 const traits = [
   "Warm",
@@ -182,7 +182,7 @@ export default function VoiceProfileContent() {
             <button
               type="button"
               onClick={() => router.push("/manuscript")}
-              className={`mt-6 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-foreground ${buttonInteractions} hover:bg-white/90 active:bg-white/80`}
+              className={`mt-6 w-full ${ghostButtonClass}`}
             >
               Start Writing
             </button>

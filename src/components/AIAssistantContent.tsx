@@ -7,7 +7,7 @@ import { useAIChat } from "@/components/AIChatProvider";
 import AIChat from "@/components/AIChat";
 import PageHeader from "@/components/layout/PageHeader";
 import Card from "@/components/ui/Card";
-import { buttonInteractions, suggestionButtonClass } from "@/components/ui/buttonStyles";
+import { ghostButtonClass, suggestionButtonClass } from "@/components/ui/buttonStyles";
 import { insightRowClass } from "@/lib/ui-classes";
 import { Brain, Sparkles } from "lucide-react";
 
@@ -93,7 +93,7 @@ export default function AIAssistantContent() {
                   "Add one personal story and one scripture reference to make this chapter feel more authentic."
                 )
               }
-              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-foreground sm:w-auto ${buttonInteractions} hover:bg-white/90 active:bg-white/80 disabled:opacity-50`}
+              className={`mt-5 w-full text-center sm:w-auto ${ghostButtonClass}`}
             >
               Apply Suggestion
             </button>
