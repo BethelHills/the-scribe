@@ -20,7 +20,7 @@ export default function DashboardLayout({
               <div className="flex items-center gap-2 px-4 py-3">
                 <BackButton variant="icon" className="shrink-0" />
 
-                <div className="min-w-0 flex-1 rounded-xl bg-[#0a0812] px-3 py-2.5">
+                <div className="min-w-0 flex-1">
                   <BrandLogo size="sm" href="/" className="w-full" />
                 </div>
 

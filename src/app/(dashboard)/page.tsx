@@ -12,7 +12,7 @@ export default function Dashboard() {
         subtitle="Welcome back, Bethel"
         title="Dashboard"
         action={
-          <ActionLink href="/manuscript" className="w-full sm:w-auto">
+          <ActionLink href="/manuscript" variant="accent" className="w-full sm:w-auto">
             Start Writing
           </ActionLink>
         }
