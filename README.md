@@ -1,36 +1,210 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Scribe
 
-## Getting Started
+AI-powered writing assistant for Christian authors, pastors, teachers, and ministry leaders.
 
-First, run the development server:
+## Overview
+
+The Scribe helps authors capture their unique voice through guided interviews, build detailed voice profiles, organize scripture references, and generate manuscript content with AI assistance.
+
+The platform is designed to feel like a personalized ghostwriter that understands an author's tone, favorite scriptures, teaching style, and signature phrases.
+
+---
+
+## Features
+
+### Dashboard
+- Project overview
+- Writing statistics
+- Author insights
+- Quick actions
+
+### Interview System
+- Guided author onboarding
+- Voice discovery questions
+- Writing style assessment
+- Ministry and theological context capture
+
+### Voice Profile
+- Author voice analysis
+- Tone identification
+- Common phrase tracking
+- Scripture preference mapping
+- Voice match scoring
+
+### Manuscript Editor
+- Rich text writing experience
+- Chapter management
+- AI-assisted writing
+- Content enhancement tools
+- Export functionality
+
+### AI Assistant
+- Chapter generation
+- Sermon outline creation
+- Devotional writing
+- Scripture recommendations
+- Tone-aware content rewriting
+
+### Scripture Library
+- Scripture organization
+- Theme categorization
+- Favorite verse tracking
+- AI-powered scripture suggestions
+
+### Templates
+- Book chapter templates
+- Sermon templates
+- Devotional templates
+- Bible study templates
+- Prayer guide templates
+
+### Analytics
+- Writing progress tracking
+- Voice consistency analysis
+- Scripture usage insights
+- AI activity monitoring
+
+### Responsive Design
+- Mobile-first experience
+- Tablet optimization
+- Desktop workspace
+- Adaptive navigation
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- Lucide React
+
+### AI
+- OpenAI API
+- Custom prompt engineering
+- Voice-aware content generation
+
+### Deployment
+- Vercel
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── (dashboard)/
+│   │   ├── page.tsx
+│   │   ├── assistant/
+│   │   ├── analytics/
+│   │   ├── interview/
+│   │   ├── manuscript/
+│   │   ├── settings/
+│   │   ├── scripture-library/
+│   │   ├── templates/
+│   │   └── voice-profile/
+│   └── api/
+│       └── assistant/
+│           └── route.ts
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Sidebar.tsx
+│   │   ├── MobileMenu.tsx
+│   │   ├── ProfileCard.tsx
+│   │   └── InspirationCard.tsx
+│   └── AIChat.tsx
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/BethelHills/the-scribe.git
+```
+
+Navigate into the project:
+
+```bash
+cd the-scribe
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create an environment file:
+
+```bash
+touch .env.local
+```
+
+Add your OpenAI API key:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Development Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+### Phase 1
+- Core UI
+- Responsive design
+- AI integration
+- Voice profiling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Phase 2
+- Supabase integration
+- Authentication
+- Manuscript storage
+- User workspaces
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Phase 3
+- Multi-author support
+- Collaboration tools
+- Advanced analytics
+- Publishing workflows
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Mission
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Scribe exists to help Christian authors preserve their voice, communicate biblical truth effectively, and produce high-quality manuscripts with the assistance of modern AI technology.
+
+---
+
+## License
+
+This project is intended for demonstration and evaluation purposes.
+
+---
+
+## Author
+
+Bethel Hillary
+
+Full-Stack Developer
+
+Built with Next.js, TypeScript, Tailwind CSS, and AI-powered workflows.
