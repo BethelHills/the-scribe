@@ -1,0 +1,129 @@
+"use client";
+
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { useAIChat } from "@/components/AIChatProvider";
+import AIChat from "@/components/AIChat";
+import PageHeader from "@/components/layout/PageHeader";
+import Card from "@/components/ui/Card";
+import { Brain, Sparkles } from "lucide-react";
+
+const quickActions = [
+  "Generate chapter outline",
+  "Rewrite in author's tone",
+  "Add supporting scripture",
+  "Create sermon notes",
+  "Expand this section",
+  "Summarize the chapter",
+];
+
+export default function AIAssistantContent() {
+  const { sendMessage } = useAIChat();
+  const searchParams = useSearchParams();
+  const initialPromptSent = useRef(false);
+
+  useEffect(() => {
+    const prompt = searchParams.get("prompt");
+    if (prompt && !initialPromptSent.current) {
+      initialPromptSent.current = true;
+      void sendMessage(prompt);
+    }
+  }, [searchParams, sendMessage]);
+
+  return (
+    <>
+      <PageHeader
+        subtitle="Creative AI Workspace"
+        title="AI Assistant"
+        description="Ask The Scribe to generate, rewrite, expand, structure, and improve content using the author's captured voice."
+      />
+
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_380px]">
+        <div className="flex min-h-[420px] flex-col">
+          <AIChat />
+        </div>
+
+        <aside className="space-y-6">
+          <Card>
+            <div className="mb-5 flex items-center gap-2">
+              <Brain className="text-[#FF7A59]" />
+              <h3 className="text-lg font-bold sm:text-xl">AI Context</h3>
+            </div>
+
+            <ContextItem title="Author" value="Dr. Michael Adeyemi" />
+            <ContextItem title="Tone" value="Warm, prophetic, pastoral" />
+            <ContextItem title="Book" value="Faith Beyond the Storm" />
+            <ContextItem title="Voice Match" value="92%" />
+          </Card>
+
+          <Card>
+            <h3 className="text-lg font-bold sm:text-xl">Quick Actions</h3>
+
+            <div className="mt-5 grid grid-cols-1 gap-3">
+              {quickActions.map((action) => (
+                <button
+                  key={action}
+                  type="button"
+                  onClick={() => void sendMessage(action)}
+                  className="flex items-center gap-3 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3 text-left text-sm hover:bg-white"
+                >
+                  <Sparkles size={16} className="shrink-0 text-[#7C4DFF]" />
+                  {action}
+                </button>
+              ))}
+            </div>
+          </Card>
+
+          <div className="rounded-[28px] border border-[#E8DFD6] bg-gradient-to-br from-[#17122B] to-[#3A2A7A] p-5 text-white shadow-sm sm:rounded-[32px] sm:p-6">
+            <h3 className="text-lg font-bold sm:text-xl">Smart Suggestions</h3>
+            <p className="mt-3 text-sm leading-6 text-white/70">
+              The next best move is to add one personal story and one scripture
+              reference to make the chapter feel more authentic.
+            </p>
+
+            <button
+              type="button"
+              onClick={() =>
+                void sendMessage(
+                  "Add one personal story and one scripture reference to make this chapter feel more authentic."
+                )
+              }
+              className="mt-5 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-[#17122B] sm:w-auto"
+            >
+              Apply Suggestion
+            </button>
+          </div>
+        </aside>
+      </div>
+    </>
+  );
+}
+
+function ContextItem({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="border-b border-[#E8DFD6] py-4 last:border-b-0">
+      <p className="text-sm text-[#7A6F8F]">{title}</p>
+      <h4 className="mt-1 font-semibold">{value}</h4>
+    </div>
+  );
+}
+
+export function AssistantPromptLink({
+  prompt,
+  children,
+  className = "",
+}: {
+  prompt: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={`/assistant?prompt=${encodeURIComponent(prompt)}`}
+      className={className}
+    >
+      {children}
+    </Link>
+  );
+}

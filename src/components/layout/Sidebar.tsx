@@ -2,32 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  BarChart3,
-  BookOpen,
-  Feather,
-  FileText,
-  Home,
-  MessageSquareText,
-  Plus,
-  Settings,
-  Sparkles,
-  UserRound,
-} from "lucide-react";
+import { Feather, Plus } from "lucide-react";
 import ProfileCard from "./ProfileCard";
 import InspirationCard from "./InspirationCard";
-
-const navItems = [
-  { name: "Dashboard", href: "/", icon: Home },
-  { name: "Interview", href: "/interview", icon: MessageSquareText },
-  { name: "Manuscripts", href: "/manuscript", icon: FileText },
-  { name: "AI Assistant", href: "/assistant", icon: Sparkles },
-  { name: "Voice Profile", href: "/voice-profile", icon: UserRound },
-  { name: "Scripture Library", href: "/scripture-library", icon: BookOpen },
-  { name: "Templates", href: "/templates", icon: FileText },
-  { name: "Analytics", href: "/analytics", icon: BarChart3 },
-  { name: "Settings", href: "/settings", icon: Settings },
-];
+import { navItems } from "./nav-items";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -46,7 +24,10 @@ export default function Sidebar() {
           </div>
         </div>
 
-        <button className="mb-7 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold shadow-lg shadow-[#E83E8C]/20">
+        <button
+          type="button"
+          className="mb-7 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold shadow-lg shadow-[#E83E8C]/20"
+        >
           <Plus size={19} />
           New Project
         </button>
