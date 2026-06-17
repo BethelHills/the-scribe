@@ -3,9 +3,15 @@ import { LOGO_SRC } from "@/lib/images";
 
 const sizes = {
   // Mobile sticky header
-  sm: { className: "h-14 w-auto max-w-[220px] sm:h-16 sm:max-w-[260px]" },
+  sm: {
+    className:
+      "h-[4.5rem] w-auto max-w-[min(100%,300px)] sm:h-20 sm:max-w-[340px]",
+  },
   // Mobile menu drawer
-  md: { className: "h-16 w-auto max-w-[260px] sm:h-[4.5rem] sm:max-w-[300px]" },
+  md: {
+    className:
+      "h-20 w-auto max-w-[min(100%,320px)] sm:h-[5.5rem] sm:max-w-[360px]",
+  },
   // Desktop sidebar — tall enough to read tagline
   lg: { className: "h-[7.5rem] w-full max-w-full sm:h-32" },
 } as const;

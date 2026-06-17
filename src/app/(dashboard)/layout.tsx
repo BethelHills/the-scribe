@@ -16,7 +16,7 @@ export default function DashboardLayout({
 
           <div className="flex min-w-0 flex-1 flex-col">
             <div className="sticky top-0 z-40 border-b border-white/10 bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] text-white shadow-sm lg:hidden">
-              <div className="flex items-center gap-2 px-4 py-3">
+              <div className="flex items-center gap-2 px-4 py-3.5 sm:py-4">
                 <div className="min-w-0 flex-1">
                   <BrandLogo size="sm" href="/" className="w-full" />
                 </div>
