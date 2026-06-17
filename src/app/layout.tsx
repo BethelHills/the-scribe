@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   applicationName: "The Scribe",
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
-    apple: [{ url: "/og-image.png", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
     type: "website",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1536,
-        height: 1024,
+        width: 1200,
+        height: 800,
         alt: "The Scribe — AI Writing Assistant for Christian Authors",
       },
     ],
