@@ -1,13 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { LOGO_SRC } from "@/lib/images";
 
-const LOGO_ASPECT = 1536 / 1024;
-
 const sizes = {
-  sm: { height: 36, className: "h-9 w-auto max-w-[140px]" },
-  md: { height: 48, className: "h-12 w-auto max-w-[180px]" },
-  lg: { height: 64, className: "h-16 w-auto max-w-[240px]" },
+  sm: { className: "h-10 w-auto max-w-[160px] sm:h-11 sm:max-w-[180px]" },
+  md: { className: "h-12 w-auto max-w-[200px]" },
+  lg: { className: "h-[4.5rem] w-auto max-w-[252px] sm:h-20 sm:max-w-[280px]" },
 } as const;
 
 export default function BrandLogo({
@@ -19,19 +16,16 @@ export default function BrandLogo({
   href?: string;
   className?: string;
 }) {
-  const { height, className: sizeClass } = sizes[size];
-  const width = Math.round(height * LOGO_ASPECT);
+  const { className: sizeClass } = sizes[size];
 
   const content = (
     <div className={className}>
-      <Image
+      {/* Native img so logo updates immediately without Next image cache */}
+      <img
         src={LOGO_SRC}
         alt="The Scribe — AI Writing Assistant"
-        width={width}
-        height={height}
-        className={`${sizeClass} object-contain object-left`}
-        priority
-        sizes="(max-width: 1024px) 140px, 240px"
+        className={`${sizeClass} block object-contain object-left`}
+        decoding="async"
       />
     </div>
   );
