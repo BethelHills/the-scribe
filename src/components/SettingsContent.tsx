@@ -14,6 +14,7 @@ import SaveButton from "@/components/ui/SaveButton";
 import PageContainer from "@/components/layout/PageContainer";
 import PageHeader from "@/components/layout/PageHeader";
 import Card from "@/components/ui/Card";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { buttonInteractions } from "@/components/ui/buttonStyles";
 
 const menuItems = [
@@ -71,11 +72,7 @@ export default function SettingsContent() {
     aiSuggestions: true,
     weeklyDigest: false,
   });
-  const [appearance, setAppearance] = useState({
-    theme: "light" as "light" | "dark" | "system",
-    compactSidebar: false,
-    largeText: false,
-  });
+  const { appearance, setAppearance, setTheme } = useTheme();
 
   const activeItem =
     menuItems.find((item) => item.id === activeMenu) ?? menuItems[0];
@@ -123,7 +120,7 @@ export default function SettingsContent() {
                   className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 text-left text-sm font-semibold xl:w-full xl:gap-3 ${buttonInteractions} ${
                     active
                       ? "bg-[#7C4DFF] text-white"
-                      : "bg-[#FAF7F2] text-[#17122B] hover:bg-white active:bg-[#F3ECE3]"
+                      : "bg-surface-muted text-foreground hover:bg-card active:bg-card"
                   }`}
                 >
                   <Icon size={18} className="shrink-0" />
@@ -136,9 +133,9 @@ export default function SettingsContent() {
 
         <section className="min-w-0">
           <Card>
-            <div className="mb-6 border-b border-[#E8DFD6] pb-5">
+            <div className="mb-6 border-b border-card-border pb-5">
               <h3 className="text-xl font-bold sm:text-2xl">{activeItem.title}</h3>
-              <p className="mt-2 text-sm text-[#7A6F8F]">{activeItem.description}</p>
+              <p className="mt-2 text-sm text-muted">{activeItem.description}</p>
             </div>
 
             {activeMenu === "profile" && <ProfilePanel />}
@@ -156,7 +153,8 @@ export default function SettingsContent() {
             {activeMenu === "appearance" && (
               <AppearancePanel
                 appearance={appearance}
-                onChange={setAppearance}
+                onThemeChange={setTheme}
+                onAppearanceChange={setAppearance}
               />
             )}
           </Card>
@@ -313,7 +311,7 @@ function APIPanel() {
       />
       <Input label="Workspace API Key" defaultValue="scribe_live_••••••••••••" type="password" />
 
-      <div className="rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] p-4 text-sm leading-6 text-[#6B617C]">
+      <div className="rounded-2xl border border-card-border bg-surface-muted p-4 text-sm leading-6 text-muted-foreground">
         API keys are stored locally for now. Supabase-backed secure storage will
         be added in a future release.
       </div>
@@ -323,14 +321,16 @@ function APIPanel() {
 
 function AppearancePanel({
   appearance,
-  onChange,
+  onThemeChange,
+  onAppearanceChange,
 }: {
   appearance: {
     theme: "light" | "dark" | "system";
     compactSidebar: boolean;
     largeText: boolean;
   };
-  onChange: React.Dispatch<
+  onThemeChange: (theme: "light" | "dark" | "system") => void;
+  onAppearanceChange: React.Dispatch<
     React.SetStateAction<{
       theme: "light" | "dark" | "system";
       compactSidebar: boolean;
@@ -347,19 +347,17 @@ function AppearancePanel({
   return (
     <div className="space-y-6">
       <div>
-        <p className="mb-3 text-sm font-semibold text-[#7A6F8F]">Theme</p>
+        <p className="mb-3 text-sm font-semibold text-muted">Theme</p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {themes.map((theme) => (
             <button
               key={theme.id}
               type="button"
-              onClick={() =>
-                onChange((prev) => ({ ...prev, theme: theme.id }))
-              }
+              onClick={() => onThemeChange(theme.id)}
               className={`rounded-2xl border px-4 py-3 text-sm font-semibold ${buttonInteractions} ${
                 appearance.theme === theme.id
-                  ? "border-[#7C4DFF] bg-[#F6EAFE] text-[#7C4DFF]"
-                  : "border-[#E8DFD6] bg-[#FAF7F2] text-[#17122B] hover:bg-white"
+                  ? "border-[#7C4DFF] bg-[#F6EAFE] text-[#7C4DFF] dark:bg-[#2A1F5C] dark:text-[#C8B6FF]"
+                  : "border-card-border bg-surface-muted text-foreground hover:bg-card"
               }`}
             >
               {theme.label}
@@ -373,7 +371,7 @@ function AppearancePanel({
         text="Use a narrower sidebar with smaller labels on desktop."
         active={appearance.compactSidebar}
         onToggle={() =>
-          onChange((prev) => ({
+          onAppearanceChange((prev) => ({
             ...prev,
             compactSidebar: !prev.compactSidebar,
           }))
@@ -385,7 +383,10 @@ function AppearancePanel({
         text="Increase manuscript and interview text size for easier reading."
         active={appearance.largeText}
         onToggle={() =>
-          onChange((prev) => ({ ...prev, largeText: !prev.largeText }))
+          onAppearanceChange((prev) => ({
+            ...prev,
+            largeText: !prev.largeText,
+          }))
         }
       />
     </div>
@@ -407,7 +408,7 @@ function Input({
       <input
         type={type}
         defaultValue={defaultValue}
-        className="w-full rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3 text-sm outline-none focus:border-[#8B5CF6]"
+        className="w-full rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none focus:border-[#8B5CF6]"
       />
     </label>
   );
@@ -425,10 +426,10 @@ function Toggle({
   onToggle: () => void;
 }) {
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:p-5">
+    <div className="flex flex-col gap-4 rounded-2xl border border-card-border bg-surface-muted p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:p-5">
       <div className="min-w-0">
         <h4 className="font-semibold">{title}</h4>
-        <p className="mt-1 text-sm text-[#7A6F8F]">{text}</p>
+        <p className="mt-1 text-sm text-muted">{text}</p>
       </div>
 
       <button
@@ -447,9 +448,9 @@ function Toggle({
 
 function SecurityCard({ title, text }: { title: string; text: string }) {
   return (
-    <div className="rounded-3xl border border-[#E8DFD6] bg-[#FAF7F2] p-5">
+    <div className="rounded-3xl border border-card-border bg-surface-muted p-5">
       <h4 className="font-semibold">{title}</h4>
-      <p className="mt-2 text-sm leading-6 text-[#7A6F8F]">{text}</p>
+      <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
     </div>
   );
 }

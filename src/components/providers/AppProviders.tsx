@@ -1,6 +1,7 @@
 "use client";
 
 import { ManuscriptProvider } from "@/components/providers/ManuscriptProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ToastProvider } from "@/components/providers/ToastProvider";
 
 export default function AppProviders({
@@ -9,8 +10,10 @@ export default function AppProviders({
   children: React.ReactNode;
 }) {
   return (
-    <ToastProvider>
-      <ManuscriptProvider>{children}</ManuscriptProvider>
-    </ToastProvider>
+    <ThemeProvider>
+      <ToastProvider>
+        <ManuscriptProvider>{children}</ManuscriptProvider>
+      </ToastProvider>
+    </ThemeProvider>
   );
 }

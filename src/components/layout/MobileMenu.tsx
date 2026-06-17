@@ -17,7 +17,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded-xl p-1 text-[#17122B] lg:hidden"
+        className="rounded-xl p-1 text-foreground lg:hidden"
         aria-label="Open menu"
       >
         <Menu size={28} />
