@@ -1,20 +1,16 @@
 import Link from "next/link";
+import AIChat from "@/components/AIChat";
 import {
   BookOpen,
   Brain,
-  Copy,
   Feather,
   FileText,
   Home,
   MessageSquareText,
-  Mic,
   Plus,
-  RefreshCcw,
-  Send,
   Settings,
   Sparkles,
   UserRound,
-  Wand2,
 } from "lucide-react";
 
 const navItems = [
@@ -125,61 +121,9 @@ export default function AIAssistantPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_380px]">
-            <section className="rounded-[32px] border border-[#E8DFD6] bg-white shadow-sm">
-              <div className="border-b border-[#E8DFD6] p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold">
-                      Manuscript Assistant
-                    </h3>
-                    <p className="mt-1 text-sm text-[#7A6F8F]">
-                      Connected to: Faith Beyond the Storm
-                    </p>
-                  </div>
-
-                  <span className="rounded-full bg-[#FDEDE6] px-4 py-2 text-sm font-semibold text-[#FF7A59]">
-                    Voice-Aware
-                  </span>
-                </div>
-              </div>
-
-              <div className="space-y-6 p-6">
-                <AssistantMessage
-                  icon={<Sparkles size={18} />}
-                  title="The Scribe"
-                  text="I have loaded the author's voice profile. I can help you write in their tone, suggest scriptures, create outlines, and improve the manuscript."
-                />
-
-                <UserMessage text="Create a chapter outline for faith during uncertainty." />
-
-                <AssistantResponse />
-
-                <UserMessage text="Now rewrite point 2 in a more prophetic and encouraging tone." />
-
-                <AssistantMessage
-                  icon={<Wand2 size={18} />}
-                  title="The Scribe"
-                  text="Here is a stronger version: Beloved, even when the road is unclear, God is not absent. The silence of a season does not mean the absence of His hand. He is still working, still guiding, and still keeping His word."
-                />
-
-                <div className="mt-8 rounded-3xl border border-[#E8DFD6] bg-[#FAF7F2] p-4">
-                  <div className="flex items-center gap-3">
-                    <button className="flex h-11 w-11 items-center justify-center rounded-full bg-white">
-                      <Mic size={18} />
-                    </button>
-
-                    <input
-                      className="flex-1 bg-transparent text-sm outline-none"
-                      placeholder="Ask The Scribe anything about this manuscript..."
-                    />
-
-                    <button className="flex h-11 w-11 items-center justify-center rounded-full bg-[#7C4DFF] text-white">
-                      <Send size={18} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <div className="flex min-h-[640px] flex-col">
+              <AIChat />
+            </div>
 
             <aside className="space-y-6">
               <div className="rounded-[32px] border border-[#E8DFD6] bg-white p-6 shadow-sm">
@@ -226,84 +170,6 @@ export default function AIAssistantPage() {
         </section>
       </div>
     </main>
-  );
-}
-
-function AssistantMessage({
-  title,
-  text,
-  icon,
-}: {
-  title: string;
-  text: string;
-  icon: React.ReactNode;
-}) {
-  return (
-    <div className="flex justify-start">
-      <div className="max-w-3xl rounded-3xl bg-[#FAF7F2] p-5">
-        <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-[#7A6F8F]">
-          {icon}
-          {title}
-        </div>
-        <p className="leading-7 text-[#3F3654]">{text}</p>
-      </div>
-    </div>
-  );
-}
-
-function UserMessage({ text }: { text: string }) {
-  return (
-    <div className="flex justify-end">
-      <div className="max-w-2xl rounded-3xl bg-[#7C4DFF] p-5 text-white">
-        <p className="text-sm font-semibold text-white/70">Author</p>
-        <p className="mt-2 leading-7">{text}</p>
-      </div>
-    </div>
-  );
-}
-
-function AssistantResponse() {
-  return (
-    <div className="rounded-3xl bg-[#FAF7F2] p-5">
-      <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#7A6F8F]">
-        <Sparkles size={18} />
-        The Scribe
-      </div>
-
-      <h4 className="text-lg font-bold">Chapter Outline</h4>
-
-      <div className="mt-4 space-y-3 text-sm leading-6 text-[#3F3654]">
-        <p>
-          <strong>1. When the Path Is Hidden</strong> — Introduce uncertainty as
-          a place where faith matures.
-        </p>
-        <p>
-          <strong>2. God Is Still Present</strong> — Show that silence does not
-          mean abandonment.
-        </p>
-        <p>
-          <strong>3. Faith Anchors the Soul</strong> — Explain how faith keeps
-          believers steady in difficult seasons.
-        </p>
-      </div>
-
-      <div className="mt-5 flex flex-wrap gap-3">
-        <button className="flex items-center gap-2 rounded-xl border border-[#E8DFD6] bg-white px-4 py-2 text-sm font-semibold">
-          <Copy size={15} />
-          Copy
-        </button>
-
-        <button className="flex items-center gap-2 rounded-xl border border-[#E8DFD6] bg-white px-4 py-2 text-sm font-semibold">
-          <RefreshCcw size={15} />
-          Regenerate
-        </button>
-
-        <button className="flex items-center gap-2 rounded-xl bg-[#17122B] px-4 py-2 text-sm font-semibold text-white">
-          <FileText size={15} />
-          Insert
-        </button>
-      </div>
-    </div>
   );
 }
 
