@@ -115,7 +115,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center rounded-xl border border-card-border bg-card text-foreground lg:hidden ${buttonInteractions} hover:bg-surface-muted`}
+        className={`flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white lg:hidden ${buttonInteractions} hover:bg-white/15`}
         aria-label="Open menu"
         aria-expanded={open}
       >
