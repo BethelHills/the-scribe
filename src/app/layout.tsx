@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getSiteUrl } from "@/lib/site";
 import { themeInitScript } from "@/lib/theme-script";
 import "./globals.css";
 
@@ -13,22 +14,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteDescription = "AI Writing Assistant for Christian Authors";
+
 export const metadata: Metadata = {
-  title: "The Scribe",
-  description: "AI Writing Assistant for Christian Authors",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: "The Scribe",
+    template: "%s | The Scribe",
+  },
+  description: siteDescription,
+  applicationName: "The Scribe",
   icons: {
-    icon: "/og-image.png",
-    apple: "/og-image.png",
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: [{ url: "/og-image.png", type: "image/png" }],
   },
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "The Scribe",
     title: "The Scribe",
-    description: "AI Writing Assistant for Christian Authors",
-    images: ["/og-image.png"],
+    description: siteDescription,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1536,
+        height: 1024,
+        alt: "The Scribe — AI Writing Assistant for Christian Authors",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Scribe",
-    description: "AI Writing Assistant for Christian Authors",
+    description: siteDescription,
     images: ["/og-image.png"],
   },
 };
