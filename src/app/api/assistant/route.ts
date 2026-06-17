@@ -7,68 +7,49 @@ const openai = new OpenAI({
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const { message } = await request.json();
 
-    const userMessage = body.message;
-
-    if (!userMessage || typeof userMessage !== "string") {
+    if (!message) {
       return NextResponse.json(
         { error: "Message is required." },
         { status: 400 }
       );
     }
 
-    const response = await openai.responses.create({
-      model: "gpt-4.1-mini",
-      input: [
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json(
+        { error: "OpenAI API key is missing." },
+        { status: 500 }
+      );
+    }
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
         {
           role: "system",
-          content: `
-You are The Scribe, an AI writing assistant for Christian authors.
-
-Your job:
-- Help authors write books, chapters, sermons, devotionals, and outlines.
-- Match the author's voice, tone, scriptures, phrases, and teaching style.
-- Write clearly, warmly, and with a pastoral tone.
-- Suggest relevant scriptures when useful.
-- Avoid sounding generic.
-- Keep responses practical and ready to insert into a manuscript.
-
-Author voice profile:
-Name: Dr. Michael Adeyemi
-Tone: Warm, prophetic, pastoral, encouraging
-Common phrases:
-- Beloved, hear this clearly...
-- Let me show you from scripture...
-- God is still working...
-- Faith is not denial...
-
-Favorite scriptures:
-- 2 Corinthians 5:7
-- Romans 8:28
-- Isaiah 41:10
-- John 14:27
-
-Current manuscript:
-Title: Faith Beyond the Storm
-Chapter: Walking in Faith When You Can't See
-          `,
+          content:
+            "You are The Scribe, an AI assistant for Christian authors. Help write manuscripts, sermons, devotionals, and outlines in a warm, pastoral, prophetic, scripture-rich tone.",
         },
         {
           role: "user",
-          content: userMessage,
+          content: message,
         },
       ],
     });
 
-    return NextResponse.json({
-      reply: response.output_text,
-    });
+    const reply =
+      completion.choices[0]?.message?.content ||
+      "No response was generated.";
+
+    return NextResponse.json({ reply });
   } catch (error) {
     console.error("AI Assistant Error:", error);
 
     return NextResponse.json(
-      { error: "Something went wrong with the AI assistant." },
+      {
+        error: "AI request failed. Check your API key, billing, or model access.",
+      },
       { status: 500 }
     );
   }
