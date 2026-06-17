@@ -35,7 +35,7 @@ export default function ProfileCard() {
 
       <Link
         href="/voice-profile"
-        className="mt-5 inline-flex items-center gap-1 text-sm text-[#B8A4FF] hover:text-white"
+        className={`mt-5 inline-flex items-center gap-1 text-sm text-[#B8A4FF] transition hover:text-white active:opacity-80`}
       >
         View Full Profile
         <span aria-hidden>→</span>

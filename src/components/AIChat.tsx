@@ -2,6 +2,7 @@
 
 import { useAIChat } from "@/components/AIChatProvider";
 import { Loader2, Send, Sparkles } from "lucide-react";
+import { buttonInteractions } from "@/components/ui/buttonStyles";
 
 export default function AIChat() {
   const { messages, loading, message, setMessage, sendMessage } = useAIChat();
@@ -61,14 +62,15 @@ export default function AIChat() {
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask The Scribe..."
-            className="min-w-0 flex-1 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3 text-sm outline-none focus:border-[#7C4DFF] sm:text-base"
+            disabled={loading}
+            className="min-w-0 flex-1 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3 text-sm outline-none focus:border-[#7C4DFF] disabled:opacity-50 sm:text-base"
           />
 
           <button
             type="button"
             onClick={() => void sendMessage()}
-            disabled={loading}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#7C4DFF] text-white transition hover:opacity-90 disabled:opacity-50 sm:h-12 sm:w-12"
+            disabled={loading || !message.trim()}
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#7C4DFF] text-white sm:h-12 sm:w-12 ${buttonInteractions} hover:bg-[#6B3FE8] active:bg-[#5A32CC] disabled:opacity-50`}
           >
             <Send size={18} />
           </button>

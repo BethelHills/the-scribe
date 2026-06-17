@@ -6,6 +6,7 @@ import { Feather, Plus } from "lucide-react";
 import ProfileCard from "./ProfileCard";
 import InspirationCard from "./InspirationCard";
 import { navItems } from "./nav-items";
+import { buttonInteractions } from "@/components/ui/buttonStyles";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -24,13 +25,13 @@ export default function Sidebar() {
           </div>
         </div>
 
-        <button
-          type="button"
-          className="mb-7 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold shadow-lg shadow-[#E83E8C]/20"
+        <Link
+          href="/interview"
+          className={`mb-7 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold shadow-lg shadow-[#E83E8C]/20 ${buttonInteractions} hover:brightness-110 active:brightness-95`}
         >
           <Plus size={19} />
           New Project
-        </button>
+        </Link>
 
         <nav className="space-y-2">
           {navItems.map((item) => {

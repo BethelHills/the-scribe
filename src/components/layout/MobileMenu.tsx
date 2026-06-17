@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, Plus, X } from "lucide-react";
 import { navItems } from "./nav-items";
+import { buttonInteractions } from "@/components/ui/buttonStyles";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -41,6 +42,15 @@ export default function MobileMenu() {
                 <X />
               </button>
             </div>
+
+            <Link
+              href="/interview"
+              onClick={() => setOpen(false)}
+              className={`mb-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold shadow-lg shadow-[#E83E8C]/20 ${buttonInteractions} hover:brightness-110 active:brightness-95`}
+            >
+              <Plus size={18} />
+              New Project
+            </Link>
 
             <nav className="space-y-2">
               {navItems.map((item) => {

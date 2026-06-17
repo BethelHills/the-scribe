@@ -8,6 +8,7 @@ import AIChat from "@/components/AIChat";
 import PageHeader from "@/components/layout/PageHeader";
 import Card from "@/components/ui/Card";
 import { Brain, Sparkles } from "lucide-react";
+import { buttonInteractions, suggestionButtonClass } from "@/components/ui/buttonStyles";
 
 const quickActions = [
   "Generate chapter outline",
@@ -19,7 +20,7 @@ const quickActions = [
 ];
 
 export default function AIAssistantContent() {
-  const { sendMessage } = useAIChat();
+  const { sendMessage, loading } = useAIChat();
   const searchParams = useSearchParams();
   const initialPromptSent = useRef(false);
 
@@ -65,8 +66,9 @@ export default function AIAssistantContent() {
                 <button
                   key={action}
                   type="button"
+                  disabled={loading}
                   onClick={() => void sendMessage(action)}
-                  className="flex items-center gap-3 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3 text-left text-sm hover:bg-white"
+                  className={`flex items-center gap-3 ${suggestionButtonClass}`}
                 >
                   <Sparkles size={16} className="shrink-0 text-[#7C4DFF]" />
                   {action}
@@ -84,12 +86,13 @@ export default function AIAssistantContent() {
 
             <button
               type="button"
+              disabled={loading}
               onClick={() =>
                 void sendMessage(
                   "Add one personal story and one scripture reference to make this chapter feel more authentic."
                 )
               }
-              className="mt-5 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-[#17122B] sm:w-auto"
+              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-[#17122B] sm:w-auto ${buttonInteractions} hover:bg-[#FAF7F2] active:bg-[#F3ECE3] disabled:opacity-50`}
             >
               Apply Suggestion
             </button>
@@ -121,7 +124,7 @@ export function AssistantPromptLink({
   return (
     <Link
       href={`/assistant?prompt=${encodeURIComponent(prompt)}`}
-      className={className}
+      className={`${className} transition hover:opacity-90 active:scale-[0.98]`}
     >
       {children}
     </Link>

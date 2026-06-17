@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AssistantPromptLink } from "@/components/AIAssistantContent";
 import { Sparkles } from "lucide-react";
 import Card from "@/components/ui/Card";
+import { buttonInteractions, suggestionButtonClass } from "@/components/ui/buttonStyles";
 
 const quickActions = [
   "Add supporting scripture",
@@ -34,7 +35,7 @@ export default function DashboardAIPanel() {
           <AssistantPromptLink
             key={item}
             prompt={item}
-            className="block w-full rounded-2xl border border-[#E8DFD6] px-4 py-3 text-left text-sm hover:bg-[#FAF7F2]"
+            className={suggestionButtonClass}
           >
             {item}
           </AssistantPromptLink>
@@ -43,7 +44,7 @@ export default function DashboardAIPanel() {
 
       <Link
         href="/assistant"
-        className="mt-6 block w-full rounded-2xl bg-[#7C4DFF] px-4 py-3 text-center text-sm font-semibold text-white hover:opacity-90"
+        className={`mt-6 block w-full rounded-2xl bg-[#7C4DFF] px-4 py-3 text-center text-sm font-semibold text-white ${buttonInteractions} hover:bg-[#6B3FE8] active:bg-[#5A32CC]`}
       >
         Open AI Assistant
       </Link>
