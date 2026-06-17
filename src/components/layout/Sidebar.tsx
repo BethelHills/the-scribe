@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import InspirationCard from "./InspirationCard";
 import {
   Home,
   MessageSquareText,
@@ -102,29 +103,33 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div className="rounded-3xl bg-white/10 p-5">
-        <p className="text-xs uppercase tracking-wide text-white/50">
-          Active Voice Profile
-        </p>
+      <div className="space-y-5">
+        <div className="rounded-3xl bg-white/10 p-5">
+          <p className="text-xs uppercase tracking-wide text-white/50">
+            Active Voice Profile
+          </p>
 
-        <h3 className="mt-3 font-semibold">
-          Dr. Michael Adeyemi
-        </h3>
+          <h3 className="mt-3 font-semibold">
+            Dr. Michael Adeyemi
+          </h3>
 
-        <p className="mt-2 text-sm text-white/60">
-          Warm, prophetic, pastoral.
-        </p>
+          <p className="mt-2 text-sm text-white/60">
+            Warm, prophetic, pastoral.
+          </p>
 
-        <div className="mt-5">
-          <div className="mb-2 flex justify-between text-xs">
-            <span>Voice Match</span>
-            <span>92%</span>
-          </div>
+          <div className="mt-5">
+            <div className="mb-2 flex justify-between text-xs">
+              <span>Voice Match</span>
+              <span>92%</span>
+            </div>
 
-          <div className="h-2 rounded-full bg-white/10">
-            <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#FF7A59]" />
+            <div className="h-2 rounded-full bg-white/10">
+              <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#FF7A59]" />
+            </div>
           </div>
         </div>
+
+        <InspirationCard />
       </div>
     </aside>
   );
