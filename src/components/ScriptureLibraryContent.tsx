@@ -83,8 +83,8 @@ export default function ScriptureLibraryContent() {
         }
       />
 
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_360px]">
-        <section className="space-y-6">
+      <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
+        <section className="min-w-0 space-y-6">
           <Card>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <div className="flex flex-1 items-center gap-3 rounded-2xl border border-card-border bg-surface-muted px-4 py-3">
@@ -100,7 +100,7 @@ export default function ScriptureLibraryContent() {
               <button
                 type="button"
                 onClick={() => showToast("Filters applied")}
-                className={`flex items-center justify-center gap-2 ${ghostButtonClass}`}
+                className={`flex w-full items-center justify-center gap-2 sm:w-auto ${ghostButtonClass}`}
               >
                 <Filter size={17} />
                 Filter
@@ -123,7 +123,7 @@ export default function ScriptureLibraryContent() {
           </div>
         </section>
 
-        <aside className="space-y-6">
+        <aside className="min-w-0 space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
               <BookMarked className="text-accent-coral" />

@@ -117,7 +117,7 @@ export default function SettingsContent() {
                   type="button"
                   onClick={() => setActiveMenu(item.id)}
                   aria-current={active ? "page" : undefined}
-                  className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 text-left text-sm font-semibold xl:w-full xl:gap-3 ${buttonInteractions} ${
+                  className={`flex min-h-[44px] shrink-0 items-center gap-2 rounded-2xl px-4 py-3 text-left text-sm font-semibold xl:w-full xl:gap-3 ${buttonInteractions} ${
                     active
                       ? "bg-accent text-white"
                       : "bg-surface-muted text-foreground hover:bg-card active:bg-card"
@@ -348,7 +348,7 @@ function AppearancePanel({
     <div className="space-y-6">
       <div>
         <p className="mb-3 text-sm font-semibold text-muted">Theme</p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
           {themes.map((theme) => (
             <button
               key={theme.id}
@@ -408,7 +408,7 @@ function Input({
       <input
         type={type}
         defaultValue={defaultValue}
-        className="w-full rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none focus:border-accent"
+        className="w-full min-h-[44px] rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none focus:border-accent"
       />
     </label>
   );

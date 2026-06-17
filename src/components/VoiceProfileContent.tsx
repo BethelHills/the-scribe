@@ -44,8 +44,8 @@ export default function VoiceProfileContent() {
         }
       />
 
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_380px]">
-        <section className="space-y-6">
+      <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,380px)]">
+        <section className="min-w-0 space-y-6">
           <Card>
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
@@ -70,7 +70,7 @@ export default function VoiceProfileContent() {
             </div>
           </Card>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
             <Metric title="Writing Samples" value="12" />
             <Metric title="Interview Answers" value="24" />
             <Metric title="Scriptures Captured" value="18" />
@@ -121,7 +121,7 @@ export default function VoiceProfileContent() {
           </Card>
         </section>
 
-        <aside className="space-y-6">
+        <aside className="min-w-0 space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
               <BookOpen className="text-accent-coral" />

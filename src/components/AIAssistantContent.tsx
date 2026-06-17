@@ -41,12 +41,12 @@ export default function AIAssistantContent() {
         description="Ask The Scribe to generate, rewrite, expand, structure, and improve content using the author's captured voice."
       />
 
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_380px]">
-        <div className="flex min-h-[420px] flex-col">
+      <div className="grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="flex min-h-0 min-w-0 flex-col md:col-span-2 xl:col-span-2">
           <AIChat />
         </div>
 
-        <aside className="space-y-6">
+        <aside className="min-w-0 space-y-6 xl:col-span-1">
           <Card>
             <div className="mb-5 flex items-center gap-2">
               <Brain className="text-accent-coral" />

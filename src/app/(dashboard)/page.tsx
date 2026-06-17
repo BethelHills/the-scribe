@@ -12,12 +12,14 @@ export default function Dashboard() {
         subtitle="Welcome back, Bethel"
         title="Dashboard"
         action={
-          <ActionLink href="/manuscript">Start Writing</ActionLink>
+          <ActionLink href="/manuscript" className="w-full sm:w-auto">
+            Start Writing
+          </ActionLink>
         }
       />
 
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="xl:col-span-2">
+      <div className="grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <Card className="min-w-0 md:col-span-2 xl:col-span-2">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
               <p className="text-sm text-muted">Current Manuscript</p>
@@ -56,10 +58,10 @@ export default function Dashboard() {
           </div>
         </Card>
 
-        <DashboardAIPanel />
+        <DashboardAIPanel className="min-w-0" />
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-6 grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         <InfoCard
           title="Style Match"
           value="96%"

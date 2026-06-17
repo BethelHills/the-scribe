@@ -18,8 +18,8 @@ export default function BackButton({
 
   const baseClass =
     variant === "icon"
-      ? `inline-flex h-10 w-10 items-center justify-center rounded-xl border border-card-border bg-card text-foreground ${buttonInteractions} hover:bg-surface-muted`
-      : `inline-flex items-center gap-2 rounded-2xl border border-card-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground ${buttonInteractions} hover:bg-surface-muted`;
+      ? `inline-flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center rounded-xl border border-card-border bg-card text-foreground ${buttonInteractions} hover:bg-surface-muted`
+      : `inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-card-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground ${buttonInteractions} hover:bg-surface-muted`;
 
   return (
     <button

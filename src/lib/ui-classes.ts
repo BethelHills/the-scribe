@@ -1,8 +1,8 @@
 export const inputClass =
-  "w-full rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent";
+  "min-h-[44px] w-full rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent";
 
 export const textareaClass =
-  "w-full resize-y rounded-2xl border border-card-border bg-card px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent";
+  "min-h-[120px] w-full resize-y rounded-2xl border border-card-border bg-card px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent";
 
 export const chatAssistantClass =
   "bg-chat-bubble text-chat-bubble-text";

@@ -107,6 +107,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 html.large-text {
@@ -144,7 +149,16 @@ html.compact-sidebar .app-sidebar {
   background: transparent;
 }
 
-/* Gradient panels that need readable text in both themes */
+.scrollbar-thin-x {
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.scrollbar-thin-x::-webkit-scrollbar {
+  height: 4px;
+}
 .theme-gradient-panel {
   background: linear-gradient(135deg, var(--callout-from), var(--callout-to));
   border: 1px solid var(--callout-border);

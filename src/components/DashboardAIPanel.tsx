@@ -14,9 +14,9 @@ const quickActions = [
   "Rewrite in author's tone",
 ];
 
-export default function DashboardAIPanel() {
+export default function DashboardAIPanel({ className = "" }: { className?: string }) {
   return (
-    <Card>
+    <Card className={className}>
       <div className="mb-6 flex items-center gap-2">
         <Sparkles className="text-accent-coral" />
         <h3 className="text-lg font-bold sm:text-xl">AI Assistant</h3>

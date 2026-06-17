@@ -57,7 +57,7 @@ export default function AnalyticsContent() {
     <PageContainer>
       <PageHeader subtitle="Writing Performance" title="Analytics" />
 
-      <div className="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
         {stats.map((stat) => {
           const Icon = stat.icon;
 
@@ -77,8 +77,8 @@ export default function AnalyticsContent() {
         })}
       </div>
 
-      <div className="mt-6 grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,380px)]">
-        <Card className="min-w-0 transition hover:shadow-md">
+      <div className="mt-6 grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <Card className="min-w-0 transition hover:shadow-md md:col-span-2 xl:col-span-2">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0">
               <h2 className="text-xl font-bold sm:text-2xl">

@@ -11,11 +11,11 @@ export default function DashboardLayout({
 }) {
   return (
     <AppProviders>
-      <main className="min-h-screen bg-background">
-        <div className="flex min-h-screen">
+      <main className="min-h-screen overflow-x-hidden bg-background">
+        <div className="flex min-h-screen min-w-0">
           <Sidebar />
 
-          <div className="flex-1">
+          <div className="flex min-w-0 flex-1 flex-col">
             <div className="sticky top-0 z-40 border-b border-card-border bg-background/90 backdrop-blur lg:hidden">
               <div className="flex items-center gap-2 px-4 py-3">
                 <BackButton variant="icon" className="shrink-0" />

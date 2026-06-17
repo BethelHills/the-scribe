@@ -17,10 +17,10 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded-xl p-1 text-foreground lg:hidden"
+        className="flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center rounded-xl text-foreground lg:hidden"
         aria-label="Open menu"
       >
-        <Menu size={28} />
+        <Menu size={24} />
       </button>
 
       {open ? (
@@ -38,9 +38,10 @@ export default function MobileMenu() {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
+                className="flex h-11 w-11 items-center justify-center rounded-xl hover:bg-white/10"
                 aria-label="Close menu"
               >
-                <X />
+                <X size={22} />
               </button>
             </div>
 
@@ -63,7 +64,7 @@ export default function MobileMenu() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm transition ${
+                    className={`flex min-h-[44px] items-center gap-3 rounded-xl px-4 py-3 text-sm transition ${
                       active
                         ? "bg-[#4A35A0] text-white"
                         : "text-white/70 hover:bg-white/10 hover:text-white"

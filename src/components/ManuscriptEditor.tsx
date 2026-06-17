@@ -34,14 +34,14 @@ export default function ManuscriptEditor() {
     <PageContainer>
       <TopBar />
 
-      <div className="mt-6 grid grid-cols-1 gap-6 xl:mt-8 xl:grid-cols-[1fr_360px]">
+      <div className="mt-6 grid min-w-0 grid-cols-1 gap-6 xl:mt-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
         <EditorCard />
         <AIChatProvider>
           <AssistantPanel />
         </AIChatProvider>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-6 grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
         <BottomCard
           title="Style Match"
           value="96%"
@@ -121,7 +121,7 @@ function TopBar() {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 text-sm sm:gap-5">
+      <div className="scrollbar-thin-x flex items-center gap-3 sm:flex-wrap sm:overflow-visible">
         <Step done label="Interview" href="/interview" />
         <Line />
         <Step done label="Voice Profile" href="/voice-profile" />
@@ -148,7 +148,7 @@ function Step({
   href?: string;
 }) {
   const content = (
-    <div className="flex items-center gap-2 sm:gap-3">
+    <div className="flex shrink-0 items-center gap-2 sm:gap-3">
       <div
         className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
           active
@@ -178,7 +178,7 @@ function Step({
 }
 
 function Line() {
-  return <div className="hidden h-px w-12 bg-step-line sm:block lg:w-20" />;
+  return <div className="h-px w-8 shrink-0 bg-step-line sm:w-12 lg:w-20" />;
 }
 
 function EditorCard() {
@@ -195,46 +195,48 @@ function EditorCard() {
   const router = useRouter();
 
   return (
-    <Card className="overflow-hidden p-0">
-      <div className="flex flex-wrap items-center gap-2 border-b border-card-border px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+    <Card className="min-w-0 overflow-hidden p-0">
+      <div className="scrollbar-thin-x flex items-center gap-2 border-b border-card-border px-4 py-3 sm:gap-3 sm:px-6 sm:py-4">
         <button
           type="button"
           onClick={() => showToast("Chapter selector opened")}
-          className={`flex items-center gap-4 rounded-xl border border-card-border px-3 py-2 text-sm sm:gap-8 sm:px-4 ${buttonInteractions} hover:bg-surface-muted`}
+          className={`flex shrink-0 items-center gap-2 rounded-xl border border-card-border px-3 py-2 text-sm sm:gap-4 sm:px-4 ${buttonInteractions} hover:bg-surface-muted`}
         >
           Chapter 3
           <ChevronDown size={16} />
         </button>
 
-        <Tool text="H1" onClick={() => showToast("Applied H1 style")} />
-        <Tool text="H2" onClick={() => showToast("Applied H2 style")} />
-        <Tool text="H3" onClick={() => showToast("Applied H3 style")} />
-        <Tool
-          icon={<List size={18} />}
-          onClick={() => showToast("List formatting applied")}
-        />
-        <Tool
-          icon={<Bold size={18} />}
-          onClick={() => showToast("Bold formatting applied")}
-        />
-        <Tool
-          icon={<Italic size={18} />}
-          onClick={() => showToast("Italic formatting applied")}
-        />
-        <Tool
-          icon={<Underline size={18} />}
-          onClick={() => showToast("Underline formatting applied")}
-        />
-        <Tool
-          icon={<LinkIcon size={18} />}
-          onClick={() => showToast("Link tool activated")}
-        />
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          <Tool text="H1" onClick={() => showToast("Applied H1 style")} />
+          <Tool text="H2" onClick={() => showToast("Applied H2 style")} />
+          <Tool text="H3" onClick={() => showToast("Applied H3 style")} />
+          <Tool
+            icon={<List size={18} />}
+            onClick={() => showToast("List formatting applied")}
+          />
+          <Tool
+            icon={<Bold size={18} />}
+            onClick={() => showToast("Bold formatting applied")}
+          />
+          <Tool
+            icon={<Italic size={18} />}
+            onClick={() => showToast("Italic formatting applied")}
+          />
+          <Tool
+            icon={<Underline size={18} />}
+            onClick={() => showToast("Underline formatting applied")}
+          />
+          <Tool
+            icon={<LinkIcon size={18} />}
+            onClick={() => showToast("Link tool activated")}
+          />
+        </div>
 
-        <div className="ml-auto flex gap-3">
+        <div className="ml-auto flex shrink-0 gap-2 sm:gap-3">
           <button
             type="button"
             onClick={() => showToast("Undo")}
-            className={buttonInteractions}
+            className={`flex h-10 w-10 items-center justify-center rounded-lg ${buttonInteractions} hover:bg-surface-muted`}
             aria-label="Undo"
           >
             <Undo2 size={18} />
@@ -242,7 +244,7 @@ function EditorCard() {
           <button
             type="button"
             onClick={() => showToast("Redo")}
-            className={buttonInteractions}
+            className={`flex h-10 w-10 items-center justify-center rounded-lg ${buttonInteractions} hover:bg-surface-muted`}
             aria-label="Redo"
           >
             <Redo2 size={18} />
@@ -272,7 +274,7 @@ function EditorCard() {
           </p>
         </div>
 
-        <div className="mt-6 grid max-w-3xl grid-cols-1 overflow-hidden rounded-2xl border border-card-border sm:mt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid max-w-3xl grid-cols-1 overflow-hidden rounded-2xl border border-card-border sm:mt-8 md:grid-cols-2 xl:grid-cols-3">
           <MiniStat title="Words" value={wordCount.toLocaleString()} />
           <MiniStat title="Last edited" value="Just now" />
           <MiniStat title="Tone Match" value="96%" />
@@ -313,8 +315,8 @@ function AssistantPanel() {
   }
 
   return (
-    <Card className="overflow-hidden p-0">
-      <div className="flex items-center justify-between border-b border-card-border p-4 sm:p-6">
+    <Card className="flex min-w-0 max-h-[min(72dvh,720px)] flex-col overflow-hidden p-0 sm:max-h-none">
+      <div className="flex shrink-0 items-center justify-between border-b border-card-border p-4 sm:p-6">
         <div className="flex items-center gap-2">
           <Sparkles className="text-accent-coral" size={20} />
           <h3 className="font-bold">AI Assistant</h3>
@@ -323,8 +325,8 @@ function AssistantPanel() {
         <ChevronDown size={18} />
       </div>
 
-      <div className="p-4 sm:p-6">
-        <div className="space-y-4">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+        <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-6">
           <Chat text="How can I help you today?" />
           <Chat
             user
@@ -353,7 +355,7 @@ function AssistantPanel() {
           </div>
         </div>
 
-        <div className="mt-8">
+        <div className="shrink-0 border-t border-card-border p-4 sm:p-6">
           <p className="mb-3 text-xs font-semibold uppercase text-muted">
             Suggestions
           </p>
@@ -371,32 +373,32 @@ function AssistantPanel() {
               </button>
             ))}
           </div>
-        </div>
 
-        <div className="mt-8 flex items-center gap-2">
-          <input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") void sendMessage();
-            }}
-            placeholder="Ask anything..."
-            disabled={loading}
-            className={`min-w-0 flex-1 ${inputClass} disabled:opacity-50`}
-          />
-          <button
-            type="button"
-            onClick={() => void sendMessage()}
-            disabled={loading || !message.trim()}
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent text-white ${buttonInteractions} hover:opacity-90 active:opacity-80 disabled:opacity-50`}
-            aria-label="Send message"
-          >
-            {loading ? (
-              <Loader2 className="animate-spin" size={18} />
-            ) : (
-              <Send size={18} />
-            )}
-          </button>
+          <div className="mt-6 flex items-center gap-2">
+            <input
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") void sendMessage();
+              }}
+              placeholder="Ask anything..."
+              disabled={loading}
+              className={`min-w-0 flex-1 ${inputClass} disabled:opacity-50`}
+            />
+            <button
+              type="button"
+              onClick={() => void sendMessage()}
+              disabled={loading || !message.trim()}
+              className={`flex h-11 min-h-[44px] w-11 min-w-[44px] shrink-0 items-center justify-center rounded-2xl bg-accent text-white ${buttonInteractions} hover:opacity-90 active:opacity-80 disabled:opacity-50`}
+              aria-label="Send message"
+            >
+              {loading ? (
+                <Loader2 className="animate-spin" size={18} />
+              ) : (
+                <Send size={18} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </Card>
@@ -416,7 +418,7 @@ function Tool({
     <button
       type="button"
       onClick={onClick}
-      className={`text-sm font-medium text-body ${buttonInteractions} rounded-lg px-2 py-1 hover:bg-surface-muted`}
+      className={`flex h-10 min-h-[40px] min-w-[40px] shrink-0 items-center justify-center text-sm font-medium text-body ${buttonInteractions} rounded-lg px-2 py-1 hover:bg-surface-muted`}
     >
       {icon || text}
     </button>

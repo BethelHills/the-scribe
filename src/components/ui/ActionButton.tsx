@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { buttonInteractions } from "./buttonStyles";
 
-const baseClass = `inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold ${buttonInteractions}`;
+const baseClass = `inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold ${buttonInteractions}`;
 
 const variants = {
   primary:

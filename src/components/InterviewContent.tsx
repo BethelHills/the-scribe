@@ -93,8 +93,8 @@ export default function InterviewContent() {
         }
       />
 
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_360px]">
-        <Card className="overflow-hidden p-0">
+      <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
+        <Card className="min-w-0 overflow-hidden p-0">
           <div className="border-b border-card-border p-4 sm:p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0">
@@ -143,7 +143,7 @@ export default function InterviewContent() {
                   type="button"
                   onClick={handleRecord}
                   disabled={recording}
-                  className={`flex items-center justify-center gap-2 ${ghostButtonClass}`}
+                  className={`flex w-full items-center justify-center gap-2 sm:w-auto ${ghostButtonClass}`}
                 >
                   <Mic size={17} />
                   {recording ? "Recording..." : "Record Answer"}
@@ -153,7 +153,7 @@ export default function InterviewContent() {
                   type="button"
                   onClick={handleSendAnswer}
                   disabled={!answer.trim()}
-                  className={`flex items-center justify-center gap-2 rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-white ${buttonInteractions} hover:opacity-90 active:opacity-80 disabled:opacity-50`}
+                  className={`flex w-full items-center justify-center gap-2 rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:opacity-90 active:opacity-80 disabled:opacity-50`}
                 >
                   Send Answer
                   <Send size={17} />
@@ -163,7 +163,7 @@ export default function InterviewContent() {
           </div>
         </Card>
 
-        <aside className="space-y-6">
+        <aside className="min-w-0 space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
               <Sparkles className="text-accent-coral" />
