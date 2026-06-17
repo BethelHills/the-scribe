@@ -75,7 +75,7 @@ function TopBar() {
     <header className="flex flex-col gap-4 sm:gap-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <BackButton className="mb-4 hidden lg:inline-flex" />
+          <BackButton className="mb-4" />
           <p className="text-sm text-muted">My Manuscripts ›</p>
 
           <div className="mt-2 flex flex-wrap items-center gap-2 sm:gap-3">
