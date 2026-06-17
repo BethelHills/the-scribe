@@ -56,60 +56,65 @@ export default function MobileMenu() {
               aria-modal="true"
               aria-label="Navigation menu"
             >
-              <div className="shrink-0 border-b border-white/10 p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <BrandLogo size="md" href="/" className="min-w-0 flex-1" />
+              <div className="shrink-0 border-b border-white/10 px-4 py-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <BrandLogo size="sm" href="/" className="min-w-0 flex-1" />
 
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white hover:bg-white/15"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white hover:bg-white/15"
                     aria-label="Close menu"
                   >
-                    <X size={22} />
+                    <X size={20} />
                   </button>
                 </div>
 
                 <Link
                   href="/interview"
                   onClick={() => setOpen(false)}
-                  className={`mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold text-white shadow-lg shadow-[#E83E8C]/20 ${buttonInteractions} hover:brightness-110 active:brightness-95`}
+                  className={`mt-3 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF8A66] to-[#E83E8C] text-sm font-semibold text-white shadow-lg shadow-[#E83E8C]/20 ${buttonInteractions} hover:brightness-110 active:brightness-95`}
                 >
-                  <Plus size={18} />
+                  <Plus size={17} />
                   New Project
                 </Link>
               </div>
 
-              <nav className="min-h-0 flex-1 space-y-1.5 overflow-y-auto px-4 py-4">
-                <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-white/50">
-                  Pages
-                </p>
+              <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+                <nav className="shrink-0 space-y-1 px-3 py-3">
+                  <p className="px-2 pb-1.5 text-xs font-semibold uppercase tracking-wide text-white/50">
+                    Pages
+                  </p>
 
-                {navItems.map((item) => {
-                  const Icon = item.icon;
-                  const active = pathname === item.href;
+                  {navItems.map((item) => {
+                    const Icon = item.icon;
+                    const active = pathname === item.href;
 
-                  return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className={`flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3 text-[15px] font-medium transition ${
-                        active
-                          ? "bg-[#4A35A0] text-white shadow-sm"
-                          : "text-white/90 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      <Icon size={18} className="shrink-0" />
-                      <span className="truncate">{item.name}</span>
-                    </Link>
-                  );
-                })}
-              </nav>
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className={`flex min-h-[44px] items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                          active
+                            ? "bg-[#4A35A0] text-white shadow-sm"
+                            : "text-white/90 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        <Icon size={17} className="shrink-0" />
+                        <span className="truncate">{item.name}</span>
+                      </Link>
+                    );
+                  })}
+                </nav>
 
-              <div className="shrink-0 space-y-4 border-t border-white/10 p-4">
-                <ProfileCard onNavigate={() => setOpen(false)} />
-                <InspirationCard />
+                <div className="mt-auto space-y-2.5 border-t border-white/10 px-3 py-3">
+                  <ProfileCard
+                    variant="compact"
+                    onNavigate={() => setOpen(false)}
+                  />
+                  <InspirationCard variant="compact" />
+                </div>
               </div>
             </aside>
           </div>,
