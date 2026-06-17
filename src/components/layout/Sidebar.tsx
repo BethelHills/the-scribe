@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Home,
   MessageSquareText,
@@ -52,6 +53,8 @@ const navItems = [
 ];
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="hidden lg:flex w-[280px] min-h-screen bg-[#17122B] text-white flex-col justify-between p-6">
       <div>
@@ -79,12 +82,17 @@ export default function Sidebar() {
         <nav className="space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const active = pathname === item.href;
 
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-white/70 hover:bg-white/10 hover:text-white transition"
+                className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm transition ${
+                  active
+                    ? "bg-white/15 text-white"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
               >
                 <Icon size={18} />
                 {item.name}
