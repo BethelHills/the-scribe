@@ -33,7 +33,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:flex h-screen w-[280px] shrink-0 flex-col justify-between overflow-y-auto rounded-r-[28px] bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] p-6 text-white">
+    <aside className="sticky top-0 hidden h-screen w-[280px] shrink-0 flex-col justify-between overflow-y-auto rounded-r-[28px] bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] p-6 text-white lg:flex">
       <div>
         <div className="mb-9 flex items-center gap-3">
           <Feather size={43} className="text-[#9D7CFF]" />
