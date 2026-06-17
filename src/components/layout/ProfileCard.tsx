@@ -3,7 +3,7 @@
 import Link from "next/link";
 import ProfileAvatar from "./ProfileAvatar";
 
-export default function ProfileCard() {
+export default function ProfileCard({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="rounded-3xl bg-white/10 p-5">
       <p className="text-xs uppercase tracking-wide text-white/50">
@@ -34,6 +34,7 @@ export default function ProfileCard() {
 
       <Link
         href="/voice-profile"
+        onClick={onNavigate}
         className="mt-5 inline-flex items-center gap-1 text-sm text-[#B8A4FF] transition hover:text-white active:opacity-80"
       >
         View Full Profile

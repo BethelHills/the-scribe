@@ -6,6 +6,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Plus, X } from "lucide-react";
 import BrandLogo from "./BrandLogo";
+import ProfileCard from "./ProfileCard";
+import InspirationCard from "./InspirationCard";
 import { navItems } from "./nav-items";
 import { buttonInteractions } from "@/components/ui/buttonStyles";
 
@@ -78,7 +80,7 @@ export default function MobileMenu() {
                 </Link>
               </div>
 
-              <nav className="flex-1 space-y-1.5 overflow-y-auto px-4 py-4">
+              <nav className="min-h-0 flex-1 space-y-1.5 overflow-y-auto px-4 py-4">
                 <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-white/50">
                   Pages
                 </p>
@@ -104,6 +106,11 @@ export default function MobileMenu() {
                   );
                 })}
               </nav>
+
+              <div className="shrink-0 space-y-4 border-t border-white/10 p-4">
+                <ProfileCard onNavigate={() => setOpen(false)} />
+                <InspirationCard />
+              </div>
             </aside>
           </div>,
           document.body
