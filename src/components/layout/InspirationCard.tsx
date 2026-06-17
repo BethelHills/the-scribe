@@ -38,27 +38,31 @@ export default function InspirationCard() {
   }, [rotate]);
 
   return (
-    <div className="relative h-[232px] w-full overflow-hidden rounded-[28px]">
-      <Image
-        src="/images/inspiration-bg.png"
-        alt=""
-        fill
-        className="object-cover object-center"
-        sizes="232px"
-        priority
-      />
+    <div className="@container relative w-full overflow-hidden rounded-[28px]">
+      <div className="relative aspect-[837/700] w-full">
+        <Image
+          src="/images/inspiration-bg.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="(max-width: 1024px) 88vw, 280px"
+          priority
+        />
 
-      {/* Verse area aligned to the glass panel in the artwork */}
-      <div className="absolute inset-x-[14px] top-[14px] flex h-[118px] flex-col px-[10px] pt-1">
-        <p className="text-[2.5rem] leading-none text-[#FF8A7A]">&ldquo;</p>
+        {/* Verse area — positioned to match the glass panel in the artwork (837×700) */}
+        <div className="absolute inset-x-[5.5%] top-[5.25%] flex h-[51%] flex-col items-start justify-start px-[4%] pt-[1%]">
+          <p className="shrink-0 text-[clamp(1.35rem,9cqi,2.25rem)] leading-none text-[#FF8A7A]">
+            &ldquo;
+          </p>
 
-        <p
-          className={`mt-2 text-[13.5px] font-medium leading-[1.55] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
-            visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
-          }`}
-        >
-          {verse}
-        </p>
+          <p
+            className={`mt-[0.35rem] w-full flex-1 text-left text-[clamp(10.5px,3.35cqi,13.5px)] font-medium leading-[1.45] text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-500 ${
+              visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+            }`}
+          >
+            {verse}
+          </p>
+        </div>
       </div>
     </div>
   );
