@@ -12,7 +12,8 @@ import PageContainer from "@/components/layout/PageContainer";
 import PageHeader from "@/components/layout/PageHeader";
 import Card from "@/components/ui/Card";
 import { useToast } from "@/components/providers/ToastProvider";
-import { buttonInteractions, ghostButtonClass } from "@/components/ui/buttonStyles";
+import { buttonInteractions, ghostButtonClass, iconButtonClass, suggestionButtonClass } from "@/components/ui/buttonStyles";
+import { badgeClass, calloutBoxClass, chatAssistantClass, chatUserClass, inputClass, textareaClass } from "@/lib/ui-classes";
 
 const questions = [
   "What message burns strongest in your heart right now?",
@@ -94,18 +95,18 @@ export default function InterviewContent() {
 
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_360px]">
         <Card className="overflow-hidden p-0">
-          <div className="border-b border-[#E8DFD6] p-4 sm:p-6">
+          <div className="border-b border-card-border p-4 sm:p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0">
                 <h3 className="text-lg font-bold sm:text-xl">
                   Interview Session 01
                 </h3>
-                <p className="mt-1 text-sm text-[#7A6F8F]">
+                <p className="mt-1 text-sm text-muted">
                   Learning Dr. Michael Adeyemi&apos;s writing voice
                 </p>
               </div>
 
-              <span className="w-fit rounded-full bg-[#FDEDE6] px-4 py-2 text-sm font-semibold text-[#FF7A59]">
+              <span className={badgeClass}>
                 In Progress
               </span>
             </div>
@@ -121,8 +122,8 @@ export default function InterviewContent() {
               />
             ))}
 
-            <div className="rounded-3xl border border-[#E8DFD6] bg-[#FFF9F2] p-4 sm:p-5">
-              <p className="text-sm font-semibold text-[#7A6F8F]">
+            <div className="rounded-3xl border border-card-border bg-highlight p-4 sm:p-5">
+              <p className="text-sm font-semibold text-muted">
                 Current Question
               </p>
 
@@ -133,7 +134,7 @@ export default function InterviewContent() {
               <textarea
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
-                className="mt-5 min-h-[120px] w-full resize-y rounded-2xl border border-[#E8DFD6] bg-white p-4 text-sm outline-none focus:border-[#8B5CF6] sm:min-h-[150px]"
+                className={`mt-5 min-h-[120px] sm:min-h-[150px] ${textareaClass}`}
                 placeholder="Type the author's answer here..."
               />
 
@@ -152,7 +153,7 @@ export default function InterviewContent() {
                   type="button"
                   onClick={handleSendAnswer}
                   disabled={!answer.trim()}
-                  className={`flex items-center justify-center gap-2 rounded-2xl bg-[#7C4DFF] px-5 py-3 text-sm font-semibold text-white ${buttonInteractions} hover:bg-[#6B3FE8] active:bg-[#5A32CC] disabled:opacity-50`}
+                  className={`flex items-center justify-center gap-2 rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-white ${buttonInteractions} hover:opacity-90 active:opacity-80 disabled:opacity-50`}
                 >
                   Send Answer
                   <Send size={17} />
@@ -165,7 +166,7 @@ export default function InterviewContent() {
         <aside className="space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
-              <Sparkles className="text-[#FF7A59]" />
+              <Sparkles className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">Voice Insights</h3>
             </div>
 
@@ -187,13 +188,13 @@ export default function InterviewContent() {
                     setAnswer(question);
                     showToast("Question loaded into answer field");
                   }}
-                  className={`w-full rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] p-4 text-left text-sm leading-6 ${buttonInteractions} hover:bg-white active:bg-[#F3ECE3]`}
+                  className={`w-full rounded-2xl border border-card-border bg-surface-muted p-4 text-left text-sm leading-6 text-foreground ${buttonInteractions} hover:bg-card active:bg-surface`}
                 >
                   <div className="mb-2 flex items-center gap-2 font-semibold">
                     <CheckCircle2
                       size={17}
                       className={
-                        index < 2 ? "text-[#7C4DFF]" : "text-[#CFC5DA]"
+                        index < 2 ? "text-accent" : "text-step-inactive-border"
                       }
                     />
                     Question {index + 1}
@@ -222,13 +223,11 @@ function Message({
     <div className={`flex ${user ? "justify-end" : "justify-start"}`}>
       <div
         className={`max-w-full rounded-3xl p-4 sm:max-w-2xl sm:p-5 ${
-          user
-            ? "bg-[#7C4DFF] text-white"
-            : "bg-[#FAF7F2] text-[#17122B]"
+          user ? chatUserClass : chatAssistantClass
         }`}
       >
         <p
-          className={`text-sm font-semibold ${user ? "text-white/70" : "text-[#7A6F8F]"}`}
+          className={`text-sm font-semibold ${user ? "text-white/70" : "text-muted"}`}
         >
           {title}
         </p>
@@ -240,8 +239,8 @@ function Message({
 
 function Insight({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border-b border-[#E8DFD6] py-4 last:border-b-0">
-      <p className="text-sm text-[#7A6F8F]">{label}</p>
+    <div className="border-b border-card-border py-4 last:border-b-0">
+      <p className="text-sm text-muted">{label}</p>
       <h4 className="mt-1 font-semibold">{value}</h4>
     </div>
   );

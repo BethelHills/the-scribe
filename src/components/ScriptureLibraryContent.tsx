@@ -87,8 +87,8 @@ export default function ScriptureLibraryContent() {
         <section className="space-y-6">
           <Card>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="flex flex-1 items-center gap-3 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3">
-                <Search size={18} className="shrink-0 text-[#7A6F8F]" />
+              <div className="flex flex-1 items-center gap-3 rounded-2xl border border-card-border bg-surface-muted px-4 py-3">
+                <Search size={18} className="shrink-0 text-muted" />
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
@@ -115,7 +115,7 @@ export default function ScriptureLibraryContent() {
               ))
             ) : (
               <Card className="md:col-span-2">
-                <p className="text-sm text-[#7A6F8F]">
+                <p className="text-sm text-muted">
                   No scriptures match your search.
                 </p>
               </Card>
@@ -126,7 +126,7 @@ export default function ScriptureLibraryContent() {
         <aside className="space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
-              <BookMarked className="text-[#FF7A59]" />
+              <BookMarked className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">Theme Groups</h3>
             </div>
 
@@ -143,13 +143,13 @@ export default function ScriptureLibraryContent() {
             ))}
           </Card>
 
-          <div className="rounded-[28px] border border-[#E8DFD6] bg-gradient-to-br from-[#17122B] to-[#3A2A7A] p-5 text-white shadow-sm sm:rounded-[32px] sm:p-6">
+          <div className="theme-promo-panel rounded-[28px] p-5 shadow-sm sm:rounded-[32px] sm:p-6">
             <div className="flex items-center gap-2">
-              <Sparkles className="text-[#FFB199]" />
+              <Sparkles className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">AI Suggestion</h3>
             </div>
 
-            <p className="mt-4 text-sm leading-6 text-white/70">
+            <p className="mt-4 text-sm leading-6 text-white/80">
               For the current chapter, The Scribe recommends using 2 Corinthians
               5:7 and John 14:27 because the topic is faith and peace during
               uncertainty.
@@ -164,7 +164,7 @@ export default function ScriptureLibraryContent() {
                   )}`
                 )
               }
-              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-center text-sm font-semibold text-[#17122B] sm:w-auto ${buttonInteractions} hover:bg-[#FAF7F2] active:bg-[#F3ECE3]`}
+              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-center text-sm font-semibold text-foreground sm:w-auto ${buttonInteractions} hover:bg-white/90 active:bg-white/80`}
             >
               Insert Suggested Verses
             </button>
@@ -190,19 +190,19 @@ function ScriptureCard({
     <Card className="rounded-[28px]">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-sm text-[#7A6F8F]">{theme}</p>
+          <p className="text-sm text-muted">{theme}</p>
           <h3 className="mt-2 text-xl font-bold sm:text-2xl">{verse}</h3>
         </div>
 
-        <Star size={20} className="shrink-0 text-[#FF7A59]" />
+        <Star size={20} className="shrink-0 text-accent-coral" />
       </div>
 
-      <p className="mt-5 text-base italic leading-7 text-[#7C4DFF] sm:text-lg sm:leading-8">
+      <p className="mt-5 text-base italic leading-7 text-accent sm:text-lg sm:leading-8">
         &ldquo;{text}&rdquo;
       </p>
 
-      <div className="mt-5 rounded-2xl bg-[#FAF7F2] p-4">
-        <p className="text-sm leading-6 text-[#5F5571]">{usage}</p>
+      <div className="mt-5 rounded-2xl bg-surface-muted p-4">
+        <p className="text-sm leading-6 text-muted-foreground">{usage}</p>
       </div>
     </Card>
   );
@@ -225,8 +225,8 @@ function Theme({
       onClick={onClick}
       className={`mb-3 flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm ${buttonInteractions} ${
         active
-          ? "bg-[#7C4DFF] text-white"
-          : "bg-[#FAF7F2] hover:bg-white active:bg-[#F3ECE3]"
+          ? "bg-accent text-white"
+          : "bg-surface-muted text-foreground hover:bg-card active:bg-surface"
       }`}
     >
       <span>{name}</span>

@@ -5,11 +5,10 @@ const baseClass = `inline-flex items-center justify-center gap-2 rounded-2xl px-
 
 const variants = {
   primary:
-    "bg-[#17122B] text-white hover:bg-[#2A2340] active:bg-[#0F0B1A]",
+    "bg-btn-primary-bg text-btn-primary-text hover:bg-btn-primary-hover active:opacity-90",
   secondary:
-    "border border-[#E8DFD6] bg-white text-[#17122B] hover:bg-[#FAF7F2] active:bg-[#F3ECE3]",
-  accent:
-    "bg-[#7C4DFF] text-white hover:bg-[#6B3FE8] active:bg-[#5A32CC]",
+    "border border-card-border bg-card text-foreground hover:bg-surface-muted active:bg-surface",
+  accent: "bg-accent text-white hover:opacity-90 active:opacity-80",
 };
 
 export function ActionButton({
@@ -51,10 +50,7 @@ export function ActionLink({
   className?: string;
 }) {
   return (
-    <Link
-      href={href}
-      className={`${baseClass} ${variants[variant]} ${className}`}
-    >
+    <Link href={href} className={`${baseClass} ${variants[variant]} ${className}`}>
       {children}
     </Link>
   );

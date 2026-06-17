@@ -9,21 +9,63 @@
   --card-border: #e8dfd6;
   --muted: #7a6f8f;
   --muted-foreground: #6b617c;
+  --body: #3f3654;
   --surface: #faf7f2;
   --surface-muted: #faf7f2;
   --input-bg: #faf7f2;
+  --chat-bubble: #faf7f2;
+  --chat-bubble-text: #17122b;
+  --editor-bg: #fffcf8;
+  --highlight: #fff9f2;
+  --accent: #7c4dff;
+  --accent-coral: #ff7a59;
+  --accent-soft: #f6eafe;
+  --badge-bg: #fdede6;
+  --badge-text: #ff7a59;
+  --callout-from: #f6eafe;
+  --callout-to: #fff0de;
+  --callout-text: #8b5cf6;
+  --callout-border: #f0cfae;
+  --quote-text: #7c4dff;
+  --btn-primary-bg: #17122b;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #2a2340;
+  --step-muted: #7a6f8f;
+  --step-line: #d8cedf;
+  --step-inactive-border: #cfc5da;
 }
 
 .dark {
   --background: #0f0b1a;
-  --foreground: #f5f0ff;
+  --foreground: #f0ebff;
   --card: #1a1530;
-  --card-border: #2d2550;
-  --muted: #9d8fc0;
-  --muted-foreground: #b8aed4;
+  --card-border: #3d3560;
+  --muted: #a89cc8;
+  --muted-foreground: #c4b8e0;
+  --body: #d4cce8;
   --surface: #15122d;
-  --surface-muted: #1f1a35;
-  --input-bg: #221c3d;
+  --surface-muted: #221c3d;
+  --input-bg: #2a2348;
+  --chat-bubble: #2a2348;
+  --chat-bubble-text: #f0ebff;
+  --editor-bg: #1f1a35;
+  --highlight: #221c3d;
+  --accent: #9d7cff;
+  --accent-coral: #ff9a7b;
+  --accent-soft: #2a1f5c;
+  --badge-bg: #3d2a4a;
+  --badge-text: #ff9a7b;
+  --callout-from: #2a1f5c;
+  --callout-to: #3d2a4a;
+  --callout-text: #c8b6ff;
+  --callout-border: #4a3d7a;
+  --quote-text: #c8b6ff;
+  --btn-primary-bg: #7c4dff;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #6b3fe8;
+  --step-muted: #a89cc8;
+  --step-line: #3d3560;
+  --step-inactive-border: #4a4068;
 }
 
 @theme inline {
@@ -33,9 +75,30 @@
   --color-card-border: var(--card-border);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-body: var(--body);
   --color-surface: var(--surface);
   --color-surface-muted: var(--surface-muted);
   --color-input-bg: var(--input-bg);
+  --color-chat-bubble: var(--chat-bubble);
+  --color-chat-bubble-text: var(--chat-bubble-text);
+  --color-editor-bg: var(--editor-bg);
+  --color-highlight: var(--highlight);
+  --color-accent: var(--accent);
+  --color-accent-coral: var(--accent-coral);
+  --color-accent-soft: var(--accent-soft);
+  --color-badge-bg: var(--badge-bg);
+  --color-badge-text: var(--badge-text);
+  --color-callout-from: var(--callout-from);
+  --color-callout-to: var(--callout-to);
+  --color-callout-text: var(--callout-text);
+  --color-callout-border: var(--callout-border);
+  --color-quote: var(--quote-text);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-text: var(--btn-primary-text);
+  --color-btn-primary-hover: var(--btn-primary-hover);
+  --color-step-muted: var(--step-muted);
+  --color-step-line: var(--step-line);
+  --color-step-inactive-border: var(--step-inactive-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -79,4 +142,21 @@ html.compact-sidebar .app-sidebar {
 
 *::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Gradient panels that need readable text in both themes */
+.theme-gradient-panel {
+  background: linear-gradient(135deg, var(--callout-from), var(--callout-to));
+  border: 1px solid var(--callout-border);
+  color: var(--callout-text);
+}
+
+.theme-promo-panel {
+  background: linear-gradient(135deg, #17122b, #3a2a7a);
+  color: #ffffff;
+}
+
+.dark .theme-promo-panel {
+  background: linear-gradient(135deg, #1a1530, #2a1f5c);
+  border: 1px solid var(--card-border);
 }

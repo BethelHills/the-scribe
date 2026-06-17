@@ -7,8 +7,9 @@ import { useAIChat } from "@/components/AIChatProvider";
 import AIChat from "@/components/AIChat";
 import PageHeader from "@/components/layout/PageHeader";
 import Card from "@/components/ui/Card";
-import { Brain, Sparkles } from "lucide-react";
 import { buttonInteractions, suggestionButtonClass } from "@/components/ui/buttonStyles";
+import { insightRowClass } from "@/lib/ui-classes";
+import { Brain, Sparkles } from "lucide-react";
 
 const quickActions = [
   "Generate chapter outline",
@@ -48,7 +49,7 @@ export default function AIAssistantContent() {
         <aside className="space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
-              <Brain className="text-[#FF7A59]" />
+              <Brain className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">AI Context</h3>
             </div>
 
@@ -70,16 +71,16 @@ export default function AIAssistantContent() {
                   onClick={() => void sendMessage(action)}
                   className={`flex items-center gap-3 ${suggestionButtonClass}`}
                 >
-                  <Sparkles size={16} className="shrink-0 text-[#7C4DFF]" />
+                  <Sparkles size={16} className="shrink-0 text-accent" />
                   {action}
                 </button>
               ))}
             </div>
           </Card>
 
-          <div className="rounded-[28px] border border-[#E8DFD6] bg-gradient-to-br from-[#17122B] to-[#3A2A7A] p-5 text-white shadow-sm sm:rounded-[32px] sm:p-6">
+          <div className="theme-promo-panel rounded-[28px] p-5 shadow-sm sm:rounded-[32px] sm:p-6">
             <h3 className="text-lg font-bold sm:text-xl">Smart Suggestions</h3>
-            <p className="mt-3 text-sm leading-6 text-white/70">
+            <p className="mt-3 text-sm leading-6 text-white/80">
               The next best move is to add one personal story and one scripture
               reference to make the chapter feel more authentic.
             </p>
@@ -92,7 +93,7 @@ export default function AIAssistantContent() {
                   "Add one personal story and one scripture reference to make this chapter feel more authentic."
                 )
               }
-              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-[#17122B] sm:w-auto ${buttonInteractions} hover:bg-[#FAF7F2] active:bg-[#F3ECE3] disabled:opacity-50`}
+              className={`mt-5 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-foreground sm:w-auto ${buttonInteractions} hover:bg-white/90 active:bg-white/80 disabled:opacity-50`}
             >
               Apply Suggestion
             </button>
@@ -105,9 +106,9 @@ export default function AIAssistantContent() {
 
 function ContextItem({ title, value }: { title: string; value: string }) {
   return (
-    <div className="border-b border-[#E8DFD6] py-4 last:border-b-0">
-      <p className="text-sm text-[#7A6F8F]">{title}</p>
-      <h4 className="mt-1 font-semibold">{value}</h4>
+    <div className={insightRowClass}>
+      <p className="text-sm text-muted">{title}</p>
+      <h4 className="mt-1 font-semibold text-foreground">{value}</h4>
     </div>
   );
 }

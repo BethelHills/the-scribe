@@ -5,6 +5,7 @@ import { AssistantPromptLink } from "@/components/AIAssistantContent";
 import { Sparkles } from "lucide-react";
 import Card from "@/components/ui/Card";
 import { buttonInteractions, suggestionButtonClass } from "@/components/ui/buttonStyles";
+import { chatAssistantClass, chatUserClass } from "@/lib/ui-classes";
 
 const quickActions = [
   "Add supporting scripture",
@@ -17,7 +18,7 @@ export default function DashboardAIPanel() {
   return (
     <Card>
       <div className="mb-6 flex items-center gap-2">
-        <Sparkles className="text-[#FF7A59]" />
+        <Sparkles className="text-accent-coral" />
         <h3 className="text-lg font-bold sm:text-xl">AI Assistant</h3>
       </div>
 
@@ -44,7 +45,7 @@ export default function DashboardAIPanel() {
 
       <Link
         href="/assistant"
-        className={`mt-6 block w-full rounded-2xl bg-[#7C4DFF] px-4 py-3 text-center text-sm font-semibold text-white ${buttonInteractions} hover:bg-[#6B3FE8] active:bg-[#5A32CC]`}
+        className={`mt-6 block w-full rounded-2xl bg-accent px-4 py-3 text-center text-sm font-semibold text-white ${buttonInteractions} hover:opacity-90 active:opacity-80`}
       >
         Open AI Assistant
       </Link>
@@ -57,8 +58,8 @@ function Message({ text, user = false }: { text: string; user?: boolean }) {
     <div
       className={`rounded-2xl p-4 text-sm leading-6 ${
         user
-          ? "ml-4 bg-[#7C4DFF] text-white sm:ml-8"
-          : "mr-4 bg-[#FAF7F2] text-[#17122B] sm:mr-8"
+          ? `ml-4 sm:ml-8 ${chatUserClass}`
+          : `mr-4 sm:mr-8 ${chatAssistantClass}`
       }`}
     >
       {text}

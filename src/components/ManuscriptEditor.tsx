@@ -25,12 +25,8 @@ import {
 import { useToast } from "@/components/providers/ToastProvider";
 import PageContainer from "@/components/layout/PageContainer";
 import Card from "@/components/ui/Card";
-import {
-  buttonInteractions,
-  ghostButtonClass,
-  iconButtonClass,
-  suggestionButtonClass,
-} from "@/components/ui/buttonStyles";
+import { buttonInteractions, iconButtonClass, suggestionButtonClass } from "@/components/ui/buttonStyles";
+import { calloutBoxClass, chatAssistantClass, chatUserClass, inputClass } from "@/lib/ui-classes";
 
 export default function ManuscriptEditor() {
   return (
@@ -78,13 +74,13 @@ function TopBar() {
     <header className="flex flex-col gap-4 sm:gap-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <p className="text-sm text-[#7A6F8F]">My Manuscripts ›</p>
+          <p className="text-sm text-muted">My Manuscripts ›</p>
 
           <div className="mt-2 flex flex-wrap items-center gap-2 sm:gap-3">
             <h2 className="text-xl font-bold sm:text-2xl">
               Faith Beyond the Storm
             </h2>
-            <span className="text-sm text-[#7A6F8F]">
+            <span className="text-sm text-muted">
               {isDirty ? "Unsaved changes" : "✓ Saved"}
             </span>
           </div>
@@ -116,7 +112,7 @@ function TopBar() {
               markSaved();
               showToast("Manuscript downloaded");
             }}
-            className={`w-full rounded-2xl bg-[#17122B] px-5 py-3 text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:bg-[#2A2340] active:bg-[#0F0B1A]`}
+            className={`w-full rounded-2xl bg-btn-primary-bg px-5 py-3 text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:bg-btn-primary-hover active:opacity-80`}
           >
             Export
           </button>
@@ -156,13 +152,13 @@ function Step({
           active
             ? "bg-gradient-to-br from-[#FF7A59] to-[#7C4DFF] text-white"
             : done
-              ? "bg-[#7C4DFF] text-white"
-              : "border border-[#CFC5DA] text-[#7A6F8F]"
+              ? "bg-accent text-white"
+              : "border border-step-inactive-border text-muted"
         }`}
       >
         {done ? "✓" : number}
       </div>
-      <span className={active ? "font-semibold" : "text-[#7A6F8F]"}>
+      <span className={active ? "font-semibold" : "text-muted"}>
         {label}
       </span>
     </div>
@@ -180,7 +176,7 @@ function Step({
 }
 
 function Line() {
-  return <div className="hidden h-px w-12 bg-[#D8CEDF] sm:block lg:w-20" />;
+  return <div className="hidden h-px w-12 bg-step-line sm:block lg:w-20" />;
 }
 
 function EditorCard() {
@@ -198,11 +194,11 @@ function EditorCard() {
 
   return (
     <Card className="overflow-hidden p-0">
-      <div className="flex flex-wrap items-center gap-2 border-b border-[#E8DFD6] px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+      <div className="flex flex-wrap items-center gap-2 border-b border-card-border px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         <button
           type="button"
           onClick={() => showToast("Chapter selector opened")}
-          className={`flex items-center gap-4 rounded-xl border border-[#E8DFD6] px-3 py-2 text-sm sm:gap-8 sm:px-4 ${buttonInteractions} hover:bg-[#FAF7F2]`}
+          className={`flex items-center gap-4 rounded-xl border border-card-border px-3 py-2 text-sm sm:gap-8 sm:px-4 ${buttonInteractions} hover:bg-surface-muted`}
         >
           Chapter 3
           <ChevronDown size={16} />
@@ -257,7 +253,7 @@ function EditorCard() {
           {chapterTitle}
         </h1>
 
-        <p className="mt-4 text-base italic text-[#7C4DFF] sm:text-xl">
+        <p className="mt-4 text-base italic text-accent sm:text-xl">
           {scripture}
         </p>
 
@@ -265,16 +261,16 @@ function EditorCard() {
           value={body}
           onChange={(e) => setBody(e.target.value)}
           onBlur={markSaved}
-          className="mt-6 min-h-[280px] w-full max-w-3xl resize-y rounded-2xl border border-transparent bg-transparent p-0 text-sm leading-7 text-[#3F3654] outline-none focus:border-[#E8DFD6] focus:bg-[#FFFCF8] focus:p-4 sm:mt-7 sm:text-base sm:leading-8"
+          className="mt-6 min-h-[280px] w-full max-w-3xl resize-y rounded-2xl border border-transparent bg-transparent p-0 text-sm leading-7 text-body outline-none focus:border-card-border focus:bg-editor-bg focus:p-4 sm:mt-7 sm:text-base sm:leading-8"
         />
 
-        <div className="mt-6 max-w-3xl rounded-2xl border border-[#F0CFAE] bg-gradient-to-r from-[#F6EAFE] to-[#FFF0DE] p-4 sm:mt-7 sm:p-5">
-          <p className="text-base font-semibold text-[#8B5CF6] sm:text-xl">
+        <div className={`mt-6 max-w-3xl sm:mt-7 ${calloutBoxClass}`}>
+          <p className="text-base font-semibold sm:text-xl">
             {callout}
           </p>
         </div>
 
-        <div className="mt-6 grid max-w-3xl grid-cols-1 overflow-hidden rounded-2xl border border-[#E8DFD6] sm:mt-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid max-w-3xl grid-cols-1 overflow-hidden rounded-2xl border border-card-border sm:mt-8 sm:grid-cols-2 lg:grid-cols-4">
           <MiniStat title="Words" value={wordCount.toLocaleString()} />
           <MiniStat title="Last edited" value="Just now" />
           <MiniStat title="Tone Match" value="96%" />
@@ -288,7 +284,7 @@ function EditorCard() {
                   )}`
                 )
               }
-              className={`w-full rounded-2xl bg-[#17122B] px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:bg-[#2A2340] active:bg-[#0F0B1A]`}
+              className={`w-full rounded-2xl bg-btn-primary-bg px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:bg-btn-primary-hover active:opacity-80`}
             >
               Enhance with AI
             </button>
@@ -316,9 +312,9 @@ function AssistantPanel() {
 
   return (
     <Card className="overflow-hidden p-0">
-      <div className="flex items-center justify-between border-b border-[#E8DFD6] p-4 sm:p-6">
+      <div className="flex items-center justify-between border-b border-card-border p-4 sm:p-6">
         <div className="flex items-center gap-2">
-          <Sparkles className="text-[#FF7A59]" size={20} />
+          <Sparkles className="text-accent-coral" size={20} />
           <h3 className="font-bold">AI Assistant</h3>
         </div>
 
@@ -333,21 +329,21 @@ function AssistantPanel() {
             text="Add a personal story about a time you had to trust God in uncertainty."
           />
 
-          <div className="rounded-3xl bg-[#FAF7F2] p-4">
+          <div className="rounded-3xl bg-surface-muted p-4">
             <p className="text-sm leading-6">
               Here&apos;s a personal story you can include in this section:
             </p>
 
-            <div className="mt-4 rounded-2xl border border-[#E8DFD6] bg-white p-4">
+            <div className="mt-4 rounded-2xl border border-card-border bg-card p-4">
               <h4 className="font-semibold">A Story of Trust</h4>
-              <p className="mt-3 text-sm leading-6 text-[#5F5571]">
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 {STORY_SUGGESTION}
               </p>
 
               <button
                 type="button"
                 onClick={handleInsertStory}
-                className={`mt-4 w-full rounded-xl bg-[#7C4DFF] px-4 py-2 text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:bg-[#6B3FE8] active:bg-[#5A32CC]`}
+                className={`mt-4 w-full rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-white sm:w-auto ${buttonInteractions} hover:opacity-90 active:opacity-80`}
               >
                 Insert into manuscript
               </button>
@@ -356,7 +352,7 @@ function AssistantPanel() {
         </div>
 
         <div className="mt-8">
-          <p className="mb-3 text-xs font-semibold uppercase text-[#7A6F8F]">
+          <p className="mb-3 text-xs font-semibold uppercase text-muted">
             Suggestions
           </p>
 
@@ -384,13 +380,13 @@ function AssistantPanel() {
             }}
             placeholder="Ask anything..."
             disabled={loading}
-            className="min-w-0 flex-1 rounded-2xl border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-3 text-sm outline-none focus:border-[#7C4DFF] disabled:opacity-50"
+            className={`min-w-0 flex-1 ${inputClass} disabled:opacity-50`}
           />
           <button
             type="button"
             onClick={() => void sendMessage()}
             disabled={loading || !message.trim()}
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#7C4DFF] text-white ${buttonInteractions} hover:bg-[#6B3FE8] active:bg-[#5A32CC]`}
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent text-white ${buttonInteractions} hover:opacity-90 active:opacity-80 disabled:opacity-50`}
             aria-label="Send message"
           >
             {loading ? (
@@ -418,7 +414,7 @@ function Tool({
     <button
       type="button"
       onClick={onClick}
-      className={`text-sm font-medium text-[#3F3654] ${buttonInteractions} rounded-lg px-2 py-1 hover:bg-[#FAF7F2]`}
+      className={`text-sm font-medium text-body ${buttonInteractions} rounded-lg px-2 py-1 hover:bg-surface-muted`}
     >
       {icon || text}
     </button>
@@ -427,8 +423,8 @@ function Tool({
 
 function MiniStat({ title, value }: { title: string; value: string }) {
   return (
-    <div className="border-b border-[#E8DFD6] p-4 last:border-b-0 sm:border-b-0 sm:border-r">
-      <p className="text-sm text-[#7A6F8F]">{title}</p>
+    <div className="border-b border-card-border p-4 last:border-b-0 sm:border-b-0 sm:border-r">
+      <p className="text-sm text-muted">{title}</p>
       <h4 className="mt-1 text-lg font-bold">{value}</h4>
     </div>
   );
@@ -439,8 +435,8 @@ function Chat({ text, user = false }: { text: string; user?: boolean }) {
     <div
       className={`rounded-2xl p-4 text-sm leading-6 ${
         user
-          ? "ml-4 bg-[#7C4DFF] text-white sm:ml-8"
-          : "mr-4 bg-[#FAF7F2] text-[#17122B] sm:mr-8"
+          ? `ml-4 sm:ml-8 ${chatUserClass}`
+          : `mr-4 sm:mr-8 ${chatAssistantClass}`
       }`}
     >
       {text}
@@ -459,9 +455,9 @@ function BottomCard({
 }) {
   return (
     <Card className="rounded-[28px]">
-      <p className="text-sm text-[#7A6F8F]">{title}</p>
+      <p className="text-sm text-muted">{title}</p>
       <h4 className="mt-3 text-2xl font-bold sm:text-3xl">{value}</h4>
-      <p className="mt-3 text-sm leading-6 text-[#6B617C]">{text}</p>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
     </Card>
   );
 }

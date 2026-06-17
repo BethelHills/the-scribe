@@ -55,15 +55,15 @@ export default function VoiceProfileContent() {
                   <h3 className="text-2xl font-bold sm:text-3xl">
                     Dr. Michael Adeyemi
                   </h3>
-                  <p className="mt-2 text-sm text-[#7A6F8F] sm:text-base">
+                  <p className="mt-2 text-sm text-muted sm:text-base">
                     Apostolic teacher, Christian author, and pastoral voice.
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-[#FAF7F2] p-5 text-center">
-                <p className="text-sm text-[#7A6F8F]">Voice Match</p>
-                <h4 className="mt-2 text-3xl font-bold text-[#7C4DFF] sm:text-4xl">
+              <div className="rounded-3xl bg-surface-muted p-5 text-center">
+                <p className="text-sm text-muted">Voice Match</p>
+                <h4 className="mt-2 text-3xl font-bold text-accent sm:text-4xl">
                   92%
                 </h4>
               </div>
@@ -78,7 +78,7 @@ export default function VoiceProfileContent() {
 
           <Card>
             <div className="mb-6 flex items-center gap-2">
-              <Brain className="text-[#FF7A59]" />
+              <Brain className="text-accent-coral" />
               <h3 className="text-xl font-bold sm:text-2xl">Voice DNA</h3>
             </div>
 
@@ -104,7 +104,7 @@ export default function VoiceProfileContent() {
 
           <Card>
             <div className="mb-6 flex items-center gap-2">
-              <PenLine className="text-[#FF7A59]" />
+              <PenLine className="text-accent-coral" />
               <h3 className="text-xl font-bold sm:text-2xl">Writing Traits</h3>
             </div>
 
@@ -112,7 +112,7 @@ export default function VoiceProfileContent() {
               {traits.map((trait) => (
                 <span
                   key={trait}
-                  className="rounded-full border border-[#E8DFD6] bg-[#FAF7F2] px-4 py-2 text-sm font-semibold sm:px-5 sm:py-3"
+                  className="rounded-full border border-card-border bg-surface-muted px-4 py-2 text-sm font-semibold sm:px-5 sm:py-3"
                 >
                   {trait}
                 </span>
@@ -124,7 +124,7 @@ export default function VoiceProfileContent() {
         <aside className="space-y-6">
           <Card>
             <div className="mb-5 flex items-center gap-2">
-              <BookOpen className="text-[#FF7A59]" />
+              <BookOpen className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">Favorite Scriptures</h3>
             </div>
 
@@ -136,7 +136,7 @@ export default function VoiceProfileContent() {
 
           <Card>
             <div className="mb-5 flex items-center gap-2">
-              <Sparkles className="text-[#FF7A59]" />
+              <Sparkles className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">Common Phrases</h3>
             </div>
 
@@ -148,20 +148,20 @@ export default function VoiceProfileContent() {
             ].map((phrase) => (
               <div
                 key={phrase}
-                className="mb-3 rounded-2xl bg-[#FAF7F2] p-4 text-sm"
+                className="mb-3 rounded-2xl bg-surface-muted p-4 text-sm"
               >
                 {phrase}
               </div>
             ))}
           </Card>
 
-          <div className="rounded-[28px] border border-[#E8DFD6] bg-gradient-to-br from-[#17122B] to-[#3A2A7A] p-5 text-white shadow-sm sm:rounded-[32px] sm:p-6">
+          <div className="theme-promo-panel rounded-[28px] p-5 shadow-sm sm:rounded-[32px] sm:p-6">
             <div className="flex items-center gap-2">
-              <TrendingUp className="text-[#FFB199]" />
+              <TrendingUp className="text-accent-coral" />
               <h3 className="text-lg font-bold sm:text-xl">AI Readiness</h3>
             </div>
 
-            <p className="mt-4 text-sm leading-6 text-white/70">
+            <p className="mt-4 text-sm leading-6 text-white/80">
               This profile is ready for manuscript generation, chapter rewriting,
               sermon outlines, and tone matching.
             </p>
@@ -173,7 +173,7 @@ export default function VoiceProfileContent() {
                 "Writing rhythm captured",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 size={17} className="shrink-0 text-[#FFB199]" />
+                  <CheckCircle2 size={17} className="shrink-0 text-accent-coral" />
                   {item}
                 </div>
               ))}
@@ -182,7 +182,7 @@ export default function VoiceProfileContent() {
             <button
               type="button"
               onClick={() => router.push("/manuscript")}
-              className={`mt-6 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-[#17122B] ${buttonInteractions} hover:bg-[#FAF7F2] active:bg-[#F3ECE3]`}
+              className={`mt-6 w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-foreground ${buttonInteractions} hover:bg-white/90 active:bg-white/80`}
             >
               Start Writing
             </button>
@@ -196,7 +196,7 @@ export default function VoiceProfileContent() {
 function Metric({ title, value }: { title: string; value: string }) {
   return (
     <Card className="rounded-[28px]">
-      <p className="text-sm text-[#7A6F8F]">{title}</p>
+      <p className="text-sm text-muted">{title}</p>
       <h4 className="mt-3 text-3xl font-bold sm:text-4xl">{value}</h4>
     </Card>
   );
@@ -204,8 +204,8 @@ function Metric({ title, value }: { title: string; value: string }) {
 
 function ProfileBlock({ title, value }: { title: string; value: string }) {
   return (
-    <div className="rounded-3xl border border-[#E8DFD6] bg-[#FAF7F2] p-4 sm:p-5">
-      <p className="text-sm text-[#7A6F8F]">{title}</p>
+    <div className="rounded-3xl border border-card-border bg-surface-muted p-4 sm:p-5">
+      <p className="text-sm text-muted">{title}</p>
       <h4 className="mt-2 text-sm font-semibold leading-7 sm:text-base">
         {value}
       </h4>
@@ -215,9 +215,9 @@ function ProfileBlock({ title, value }: { title: string; value: string }) {
 
 function Scripture({ text, note }: { text: string; note: string }) {
   return (
-    <div className="border-b border-[#E8DFD6] py-4 last:border-b-0">
+    <div className="border-b border-card-border py-4 last:border-b-0">
       <h4 className="font-semibold">{text}</h4>
-      <p className="mt-1 text-sm text-[#7A6F8F]">{note}</p>
+      <p className="mt-1 text-sm text-muted">{note}</p>
     </div>
   );
 }

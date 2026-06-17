@@ -119,7 +119,7 @@ export default function SettingsContent() {
                   aria-current={active ? "page" : undefined}
                   className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 text-left text-sm font-semibold xl:w-full xl:gap-3 ${buttonInteractions} ${
                     active
-                      ? "bg-[#7C4DFF] text-white"
+                      ? "bg-accent text-white"
                       : "bg-surface-muted text-foreground hover:bg-card active:bg-card"
                   }`}
                 >
@@ -356,7 +356,7 @@ function AppearancePanel({
               onClick={() => onThemeChange(theme.id)}
               className={`rounded-2xl border px-4 py-3 text-sm font-semibold ${buttonInteractions} ${
                 appearance.theme === theme.id
-                  ? "border-[#7C4DFF] bg-[#F6EAFE] text-[#7C4DFF] dark:bg-[#2A1F5C] dark:text-[#C8B6FF]"
+                  ? "border-accent bg-accent-soft text-accent"
                   : "border-card-border bg-surface-muted text-foreground hover:bg-card"
               }`}
             >
@@ -404,11 +404,11 @@ function Input({
 }) {
   return (
     <label>
-      <p className="mb-2 text-sm font-semibold text-[#7A6F8F]">{label}</p>
+      <p className="mb-2 text-sm font-semibold text-muted">{label}</p>
       <input
         type={type}
         defaultValue={defaultValue}
-        className="w-full rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none focus:border-[#8B5CF6]"
+        className="w-full rounded-2xl border border-card-border bg-input-bg px-4 py-3 text-sm text-foreground outline-none focus:border-accent"
       />
     </label>
   );
@@ -437,7 +437,7 @@ function Toggle({
         aria-pressed={active}
         onClick={onToggle}
         className={`flex h-7 w-12 shrink-0 items-center rounded-full p-1 ${buttonInteractions} ${
-          active ? "justify-end bg-[#7C4DFF]" : "justify-start bg-[#D8CEDF]"
+          active ? "justify-end bg-accent" : "justify-start bg-step-line"
         }`}
       >
         <div className="h-5 w-5 rounded-full bg-white" />
