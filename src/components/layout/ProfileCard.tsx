@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ProfileAvatar from "./ProfileAvatar";
 
 export default function ProfileCard() {
   return (
@@ -10,9 +11,7 @@ export default function ProfileCard() {
       </p>
 
       <div className="mt-4 flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-[#FF7A59] to-[#8B5CF6] text-sm font-bold">
-          M
-        </div>
+        <ProfileAvatar size="md" />
 
         <div>
           <h3 className="font-semibold">Dr. Michael Adeyemi</h3>
@@ -35,7 +34,7 @@ export default function ProfileCard() {
 
       <Link
         href="/voice-profile"
-        className={`mt-5 inline-flex items-center gap-1 text-sm text-[#B8A4FF] transition hover:text-white active:opacity-80`}
+        className="mt-5 inline-flex items-center gap-1 text-sm text-[#B8A4FF] transition hover:text-white active:opacity-80"
       >
         View Full Profile
         <span aria-hidden>→</span>

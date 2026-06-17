@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Plus, X } from "lucide-react";
+import BrandLogo from "./BrandLogo";
 import { navItems } from "./nav-items";
 import { buttonInteractions } from "@/components/ui/buttonStyles";
 
@@ -31,8 +32,8 @@ export default function MobileMenu() {
             className="flex h-full w-[min(280px,85vw)] flex-col overflow-y-auto bg-gradient-to-b from-[#15122D] via-[#171236] to-[#24184C] p-6 text-white"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-8 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-[#C8B6FF]">The Scribe</h2>
+            <div className="mb-8 flex items-center justify-between gap-3">
+              <BrandLogo size="md" href="/" />
 
               <button
                 type="button"

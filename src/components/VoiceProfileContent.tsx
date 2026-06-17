@@ -8,6 +8,7 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
+import ProfileAvatar from "@/components/layout/ProfileAvatar";
 import SaveButton from "@/components/ui/SaveButton";
 import PageContainer from "@/components/layout/PageContainer";
 import PageHeader from "@/components/layout/PageHeader";
@@ -48,9 +49,7 @@ export default function VoiceProfileContent() {
           <Card>
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[24px] bg-gradient-to-br from-[#FF7A59] to-[#8B5CF6] text-2xl font-bold text-white sm:h-20 sm:w-20 sm:rounded-[28px] sm:text-3xl">
-                  M
-                </div>
+                <ProfileAvatar size="xl" />
 
                 <div className="min-w-0">
                   <h3 className="text-2xl font-bold sm:text-3xl">

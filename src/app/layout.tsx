@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "The Scribe — AI Writing Assistant",
   description:
     "AI-powered writing workspace that learns and writes in an author's unique voice.",
+  icons: {
+    icon: "/images/the-scribe-logo.png",
+    apple: "/images/the-scribe-logo.png",
+  },
 };
 
 export default function RootLayout({

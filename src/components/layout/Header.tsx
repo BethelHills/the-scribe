@@ -1,4 +1,5 @@
 import { Bell, Search } from "lucide-react";
+import ProfileAvatar from "@/components/layout/ProfileAvatar";
 
 export default function Header({
   title,
@@ -39,7 +40,7 @@ export default function Header({
               <Bell size={18} />
             </button>
 
-            <div className="h-11 w-11 rounded-full bg-gradient-to-r from-[#FF7A59] to-[#8B5CF6]" />
+            <ProfileAvatar size="md" className="border-[#E8DFD6]" />
           </div>
         </div>
       </div>
