@@ -5,15 +5,15 @@ const sizes = {
   // Mobile sticky header
   sm: {
     className:
-      "h-[4.5rem] w-auto max-w-[min(100%,300px)] sm:h-20 sm:max-w-[340px]",
+      "h-20 w-auto max-w-[min(100%,340px)] sm:h-[5.5rem] sm:max-w-[400px]",
   },
   // Mobile menu drawer
   md: {
     className:
-      "h-20 w-auto max-w-[min(100%,320px)] sm:h-[5.5rem] sm:max-w-[360px]",
+      "h-[5.5rem] w-auto max-w-[min(100%,360px)] sm:h-24 sm:max-w-[420px]",
   },
   // Desktop sidebar — tall enough to read tagline
-  lg: { className: "h-[7.5rem] w-full max-w-full sm:h-32" },
+  lg: { className: "h-[8.5rem] w-full max-w-full sm:h-36" },
 } as const;
 
 export default function BrandLogo({
