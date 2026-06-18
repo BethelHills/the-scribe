@@ -10,6 +10,37 @@ The platform is designed to feel like a personalized ghostwriter that understand
 
 ---
 
+## Screenshots
+
+### Dashboard
+![Dashboard](public/screenshots/Dashboard.png)
+
+### Interview
+![Interview](public/screenshots/Interview.png)
+
+### Manuscripts
+![Manuscripts](public/screenshots/Manuscripts.png)
+
+### AI Assistant
+![AI Assistant](public/screenshots/AI%20Assistant.png)
+
+### Voice Profile
+![Voice Profile](public/screenshots/Voice%20Profile.png)
+
+### Scripture Library
+![Scripture Library](public/screenshots/Scripture%20Library.png)
+
+### Templates
+![Templates](public/screenshots/Templates.png)
+
+### Analytics
+![Analytics](public/screenshots/Analytics.png)
+
+### Settings
+![Settings](public/screenshots/Settings.png)
+
+---
+
 ## Features
 
 ### Dashboard
@@ -109,6 +140,8 @@ src/
 │   └── api/
 │       └── assistant/
 │           └── route.ts
+├── public/
+│   └── screenshots/
 ├── components/
 │   ├── layout/
 │   │   ├── Header.tsx
